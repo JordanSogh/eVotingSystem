@@ -17,7 +17,14 @@ namespace eVotingSystem
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            LoginForm loginform = new LoginForm();
+            Application.Run(loginform);
+
+
+            if (loginform.UserRoleLoggedIn)
+            {
+                Application.Run(new MainForm(loginform.PassedUser));
+            }
         }
     }
 }

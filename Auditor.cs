@@ -8,7 +8,16 @@ namespace eVotingSystem
 {
     class Auditor
     {
+        private bool loggedIn;
+        private string userName;
+        private string password;
+        private string role = "Auditor";
 
-
+        public Auditor(bool loggedInC, string userNameC, string passwordC)
+        {
+            loggedIn = loggedInC;
+            userName = userNameC;
+            password = passwordC;
+        }
     }
 }

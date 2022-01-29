@@ -37,7 +37,6 @@ namespace eVotingSystem
             this.usernameInput = new System.Windows.Forms.TextBox();
             this.passwordInput = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
-            this.showUsernameButton = new System.Windows.Forms.Button();
             this.showPasswordButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LoginBackground)).BeginInit();
             this.SuspendLayout();
@@ -45,9 +44,9 @@ namespace eVotingSystem
             // LoginBackground
             // 
             this.LoginBackground.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.LoginBackground.Location = new System.Drawing.Point(279, 83);
+            this.LoginBackground.Location = new System.Drawing.Point(73, 85);
             this.LoginBackground.Name = "LoginBackground";
-            this.LoginBackground.Size = new System.Drawing.Size(800, 800);
+            this.LoginBackground.Size = new System.Drawing.Size(800, 618);
             this.LoginBackground.TabIndex = 0;
             this.LoginBackground.TabStop = false;
             this.LoginBackground.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -57,7 +56,7 @@ namespace eVotingSystem
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.titleLabel.Font = new System.Drawing.Font("Bookman Old Style", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.titleLabel.Location = new System.Drawing.Point(372, 96);
+            this.titleLabel.Location = new System.Drawing.Point(156, 119);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(614, 90);
             this.titleLabel.TabIndex = 1;
@@ -69,7 +68,7 @@ namespace eVotingSystem
             this.usernameLabel.AutoSize = true;
             this.usernameLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.usernameLabel.Font = new System.Drawing.Font("Calibri", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.usernameLabel.Location = new System.Drawing.Point(423, 584);
+            this.usernameLabel.Location = new System.Drawing.Point(156, 327);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(178, 45);
             this.usernameLabel.TabIndex = 2;
@@ -81,7 +80,7 @@ namespace eVotingSystem
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.passwordLabel.Font = new System.Drawing.Font("Calibri", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordLabel.Location = new System.Drawing.Point(423, 652);
+            this.passwordLabel.Location = new System.Drawing.Point(166, 412);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(168, 45);
             this.passwordLabel.TabIndex = 3;
@@ -91,25 +90,27 @@ namespace eVotingSystem
             // usernameInput
             // 
             this.usernameInput.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.usernameInput.Location = new System.Drawing.Point(607, 589);
+            this.usernameInput.Location = new System.Drawing.Point(440, 332);
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(242, 42);
             this.usernameInput.TabIndex = 4;
+            this.usernameInput.Text = "userName";
             this.usernameInput.TextChanged += new System.EventHandler(this.usernameInput_TextChanged);
             // 
             // passwordInput
             // 
             this.passwordInput.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.passwordInput.Location = new System.Drawing.Point(607, 652);
+            this.passwordInput.Location = new System.Drawing.Point(440, 416);
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(242, 42);
             this.passwordInput.TabIndex = 5;
+            this.passwordInput.Text = "password";
             this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.loginButton.Location = new System.Drawing.Point(656, 727);
+            this.loginButton.Location = new System.Drawing.Point(440, 534);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(141, 40);
             this.loginButton.TabIndex = 6;
@@ -117,24 +118,12 @@ namespace eVotingSystem
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // showUsernameButton
-            // 
-            this.showUsernameButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.showUsernameButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showUsernameButton.BackgroundImage")));
-            this.showUsernameButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.showUsernameButton.Location = new System.Drawing.Point(855, 600);
-            this.showUsernameButton.Name = "showUsernameButton";
-            this.showUsernameButton.Size = new System.Drawing.Size(40, 29);
-            this.showUsernameButton.TabIndex = 7;
-            this.showUsernameButton.UseVisualStyleBackColor = false;
-            this.showUsernameButton.Click += new System.EventHandler(this.showUsernameButton_Click);
-            // 
             // showPasswordButton
             // 
             this.showPasswordButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.showPasswordButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPasswordButton.BackgroundImage")));
             this.showPasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.showPasswordButton.Location = new System.Drawing.Point(855, 662);
+            this.showPasswordButton.Location = new System.Drawing.Point(757, 426);
             this.showPasswordButton.Name = "showPasswordButton";
             this.showPasswordButton.Size = new System.Drawing.Size(40, 29);
             this.showPasswordButton.TabIndex = 8;
@@ -145,12 +134,11 @@ namespace eVotingSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1382, 953);
+            this.ClientSize = new System.Drawing.Size(982, 753);
             this.Controls.Add(this.showPasswordButton);
-            this.Controls.Add(this.showUsernameButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordInput);
             this.Controls.Add(this.usernameInput);
@@ -160,7 +148,6 @@ namespace eVotingSystem
             this.Controls.Add(this.LoginBackground);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LoginBackground)).EndInit();
@@ -178,7 +165,6 @@ namespace eVotingSystem
         private System.Windows.Forms.TextBox usernameInput;
         private System.Windows.Forms.TextBox passwordInput;
         private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.Button showUsernameButton;
         private System.Windows.Forms.Button showPasswordButton;
     }
 }
