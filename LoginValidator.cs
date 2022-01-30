@@ -16,6 +16,7 @@ namespace eVotingSystem
         public string Password { get => password; set => password = value; }
         public string UserName { get => userName; set => userName = value; }
         public string Role { get => role; set => role = value; }
+
         public bool LoginUser(string usernameC, string passwordC)
         {
             bool userFound = false;

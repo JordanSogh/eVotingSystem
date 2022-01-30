@@ -32,17 +32,9 @@ namespace eVotingSystem
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.roleLabel = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.VoteButton = new MetroFramework.Controls.MetroButton();
-            this.CreateUser = new MetroFramework.Controls.MetroTile();
-            this.DeleteUser = new MetroFramework.Controls.MetroTile();
-            this.CreateCampaign = new MetroFramework.Controls.MetroTile();
-            this.DeleteCampaign = new MetroFramework.Controls.MetroTile();
-            this.UpdateUser = new MetroFramework.Controls.MetroTile();
-            this.AdminGroupBox = new System.Windows.Forms.GroupBox();
-            this.VoterGroupBox = new System.Windows.Forms.GroupBox();
-            this.AuditorGroupBox = new System.Windows.Forms.GroupBox();
-            this.AdminGroupBox.SuspendLayout();
-            this.VoterGroupBox.SuspendLayout();
+            this.adminControl2 = new eVotingSystem.UserControls.AdminControl();
+            this.auditorControl2 = new eVotingSystem.UserControls.AuditorControl();
+            this.voterControl1 = new eVotingSystem.UserControls.VoterControl();
             this.SuspendLayout();
             // 
             // roleLabel
@@ -68,120 +60,44 @@ namespace eVotingSystem
             this.metroLabel1.Text = "Logged in as:";
             this.metroLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // VoteButton
+            // adminControl2
             // 
-            this.VoteButton.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.VoteButton.Location = new System.Drawing.Point(534, 437);
-            this.VoteButton.Name = "VoteButton";
-            this.VoteButton.Size = new System.Drawing.Size(170, 83);
-            this.VoteButton.TabIndex = 2;
-            this.VoteButton.Text = "Vote";
-            this.VoteButton.UseSelectable = true;
-            this.VoteButton.Click += new System.EventHandler(this.VoteButton_Click);
+            this.adminControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.adminControl2.Location = new System.Drawing.Point(33, 94);
+            this.adminControl2.Name = "adminControl2";
+            this.adminControl2.Size = new System.Drawing.Size(1330, 687);
+            this.adminControl2.TabIndex = 12;
+            this.adminControl2.Visible = false;
+            this.adminControl2.Load += new System.EventHandler(this.adminControl2_Load);
             // 
-            // CreateUser
+            // auditorControl2
             // 
-            this.CreateUser.ActiveControl = null;
-            this.CreateUser.Location = new System.Drawing.Point(356, 33);
-            this.CreateUser.Name = "CreateUser";
-            this.CreateUser.Size = new System.Drawing.Size(137, 99);
-            this.CreateUser.TabIndex = 3;
-            this.CreateUser.Text = "Create";
-            this.CreateUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CreateUser.UseSelectable = true;
-            this.CreateUser.Click += new System.EventHandler(this.CreateUser_Click);
+            this.auditorControl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.auditorControl2.Location = new System.Drawing.Point(33, 94);
+            this.auditorControl2.Name = "auditorControl2";
+            this.auditorControl2.Size = new System.Drawing.Size(1330, 687);
+            this.auditorControl2.TabIndex = 11;
+            this.auditorControl2.Visible = false;
+            this.auditorControl2.Load += new System.EventHandler(this.auditorControl2_Load);
             // 
-            // DeleteUser
+            // voterControl1
             // 
-            this.DeleteUser.ActiveControl = null;
-            this.DeleteUser.Location = new System.Drawing.Point(24, 33);
-            this.DeleteUser.Name = "DeleteUser";
-            this.DeleteUser.Size = new System.Drawing.Size(137, 99);
-            this.DeleteUser.TabIndex = 4;
-            this.DeleteUser.Text = "Delete";
-            this.DeleteUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DeleteUser.UseSelectable = true;
-            this.DeleteUser.Click += new System.EventHandler(this.DeleteUser_Click);
-            // 
-            // CreateCampaign
-            // 
-            this.CreateCampaign.ActiveControl = null;
-            this.CreateCampaign.Location = new System.Drawing.Point(329, 386);
-            this.CreateCampaign.Name = "CreateCampaign";
-            this.CreateCampaign.Size = new System.Drawing.Size(137, 99);
-            this.CreateCampaign.TabIndex = 6;
-            this.CreateCampaign.Text = "Create Campaign";
-            this.CreateCampaign.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.CreateCampaign.UseSelectable = true;
-            this.CreateCampaign.Click += new System.EventHandler(this.CreateCampaign_Click);
-            // 
-            // DeleteCampaign
-            // 
-            this.DeleteCampaign.ActiveControl = null;
-            this.DeleteCampaign.Location = new System.Drawing.Point(57, 350);
-            this.DeleteCampaign.Name = "DeleteCampaign";
-            this.DeleteCampaign.Size = new System.Drawing.Size(137, 99);
-            this.DeleteCampaign.TabIndex = 7;
-            this.DeleteCampaign.Text = "Delete Campaign";
-            this.DeleteCampaign.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DeleteCampaign.UseSelectable = true;
-            // 
-            // UpdateUser
-            // 
-            this.UpdateUser.ActiveControl = null;
-            this.UpdateUser.Location = new System.Drawing.Point(190, 33);
-            this.UpdateUser.Name = "UpdateUser";
-            this.UpdateUser.Size = new System.Drawing.Size(137, 99);
-            this.UpdateUser.TabIndex = 5;
-            this.UpdateUser.Text = "Update";
-            this.UpdateUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.UpdateUser.UseSelectable = true;
-            this.UpdateUser.Click += new System.EventHandler(this.UpdateUser_Click);
-            // 
-            // AdminGroupBox
-            // 
-            this.AdminGroupBox.Controls.Add(this.VoterGroupBox);
-            this.AdminGroupBox.Controls.Add(this.DeleteUser);
-            this.AdminGroupBox.Controls.Add(this.CreateCampaign);
-            this.AdminGroupBox.Controls.Add(this.DeleteCampaign);
-            this.AdminGroupBox.Controls.Add(this.UpdateUser);
-            this.AdminGroupBox.Controls.Add(this.CreateUser);
-            this.AdminGroupBox.Location = new System.Drawing.Point(23, 69);
-            this.AdminGroupBox.Name = "AdminGroupBox";
-            this.AdminGroupBox.Size = new System.Drawing.Size(1340, 548);
-            this.AdminGroupBox.TabIndex = 8;
-            this.AdminGroupBox.TabStop = false;
-            this.AdminGroupBox.Visible = false;
-            this.AdminGroupBox.Enter += new System.EventHandler(this.AdminGroupBox_Click);
-            // 
-            // VoterGroupBox
-            // 
-            this.VoterGroupBox.Controls.Add(this.VoteButton);
-            this.VoterGroupBox.Controls.Add(this.AuditorGroupBox);
-            this.VoterGroupBox.Location = new System.Drawing.Point(6, 0);
-            this.VoterGroupBox.Name = "VoterGroupBox";
-            this.VoterGroupBox.Size = new System.Drawing.Size(1334, 548);
-            this.VoterGroupBox.TabIndex = 9;
-            this.VoterGroupBox.TabStop = false;
-            this.VoterGroupBox.Visible = false;
-            this.VoterGroupBox.Enter += new System.EventHandler(this.VoterGroupBox_Enter);
-            // 
-            // AuditorGroupBox
-            // 
-            this.AuditorGroupBox.Location = new System.Drawing.Point(2, 11);
-            this.AuditorGroupBox.Name = "AuditorGroupBox";
-            this.AuditorGroupBox.Size = new System.Drawing.Size(1346, 548);
-            this.AuditorGroupBox.TabIndex = 10;
-            this.AuditorGroupBox.TabStop = false;
-            this.AuditorGroupBox.Visible = false;
-            this.AuditorGroupBox.Enter += new System.EventHandler(this.AuditorGroupBox_Enter);
+            this.voterControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.voterControl1.Location = new System.Drawing.Point(23, 94);
+            this.voterControl1.Name = "voterControl1";
+            this.voterControl1.Size = new System.Drawing.Size(1354, 672);
+            this.voterControl1.TabIndex = 10;
+            this.voterControl1.Visible = false;
+            this.voterControl1.Load += new System.EventHandler(this.voterControl1_Load);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 800);
-            this.Controls.Add(this.AdminGroupBox);
+            this.Controls.Add(this.adminControl2);
+            this.Controls.Add(this.auditorControl2);
+            this.Controls.Add(this.voterControl1);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.roleLabel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,8 +108,6 @@ namespace eVotingSystem
             this.Resizable = false;
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.LoginForm1_Load);
-            this.AdminGroupBox.ResumeLayout(false);
-            this.VoterGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -202,14 +116,6 @@ namespace eVotingSystem
 
         private MetroFramework.Controls.MetroLabel roleLabel;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroButton VoteButton;
-        private MetroFramework.Controls.MetroTile CreateUser;
-        private MetroFramework.Controls.MetroTile DeleteUser;
-        private MetroFramework.Controls.MetroTile CreateCampaign;
-        private MetroFramework.Controls.MetroTile DeleteCampaign;
-        private MetroFramework.Controls.MetroTile UpdateUser;
-        private System.Windows.Forms.GroupBox AdminGroupBox;
-        private System.Windows.Forms.GroupBox VoterGroupBox;
-        private System.Windows.Forms.GroupBox AuditorGroupBox;
+        
     }
 }

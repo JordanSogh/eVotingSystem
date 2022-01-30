@@ -21,6 +21,8 @@ namespace eVotingSystem
                 return sqliteConn;
         }
 
+        // Transcation scope
+
         public string ValidateLogin(string usernameC, string passwordC)
         {
             string userRole = null;
@@ -44,7 +46,36 @@ namespace eVotingSystem
 
             return userRole;
         }
-
         
+        public void CreateCampaign(string nameC, int lengthC, bool isCurrentC)
+        {
+
+
+            SQLiteConnection connection = CreateConnection();
+
+            SQLiteCommand sqliteCommand;
+
+            using (sqliteCommand = connection.CreateCommand())
+            {
+                string createString = "UPDATE Campaign SET IsCurrent = 0 WHERE IsCurrent = 1; INSERT INTO Campaign ( CampaignName, CampaignLength, IsCurrent ) VALUES ( @Name, @Length, @iSCurrent );";
+
+                sqliteCommand.Parameters.AddWithValue("@false", 0);
+                sqliteCommand.Parameters.AddWithValue("@true", 1);
+
+                sqliteCommand.Parameters.AddWithValue("@Name", nameC);
+                sqliteCommand.Parameters.AddWithValue("@Length", lengthC);
+                sqliteCommand.Parameters.AddWithValue("@isCurrent", isCurrentC);
+                sqliteCommand.CommandText = createString;
+                sqliteCommand.ExecuteNonQuery();
+
+            }
+
+            connection.Close();
+
+        }
+
+      
     }
+
+
 }

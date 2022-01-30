@@ -19,44 +19,51 @@ namespace eVotingSystem
         Admin admin;
         Auditor auditor;
 
+        private UserControls.VoterControl voterControl1;
+        private UserControls.AdminControl adminControl2;
+        private UserControls.AuditorControl auditorControl2;
+
         public MainForm(LoginValidator passedDetailsC)
         {
             InitializeComponent();
             PassedUserDetails = passedDetailsC;
 
+        }
+
+        private void LoginForm1_Load(object sender, EventArgs e)
+        {
             user = new User();
-            user.SetLoginDetails(PassedUserDetails.Role,PassedUserDetails.UserName, PassedUserDetails.Password);
+            user.SetLoginDetails(PassedUserDetails.Role, PassedUserDetails.UserName, PassedUserDetails.Password);
             user.GetUserDetails();
 
-            if (user.role == "Voter"){
+            
+
+            if (user.role == "Voter")
+            {
                 voter = new Voter();
                 roleLabel.Text = "Voter";
-                VoterGroupBox.Show();
-                AuditorGroupBox.Hide();
-                AdminGroupBox.Hide();
+                voterControl1.Show();
+                voterControl1.GetUser(user);
+                
             };
             if (user.role == "Admin")
             {
-                admin = new Admin() ;
+                admin = new Admin();
                 roleLabel.Text = "Admin";
-                VoterGroupBox.Hide();
-                AuditorGroupBox.Hide();
-                AdminGroupBox.Show();
+                adminControl2.Show();
+                adminControl2.GetUser(user);
+                
             };
             if (user.role == "Auditor")
             {
                 auditor = new Auditor();
                 roleLabel.Text = "Auditor";
-                VoterGroupBox.Hide();
-                AuditorGroupBox.Show();
-                AdminGroupBox.Hide();
+                auditorControl2.Show();
+                auditorControl2.GetUser(user);
             };
 
-        }
 
-        private void LoginForm1_Load(object sender, EventArgs e)
-        {
-          
+
         }
 
         private void roleLabel_Click(object sender, EventArgs e)
@@ -96,7 +103,8 @@ namespace eVotingSystem
 
         }
 
-        private void AdminGroupBox_Click(object sender, EventArgs e)
+ 
+        private void CreateAudit_Click(object sender, EventArgs e)
         {
 
         }
@@ -106,7 +114,22 @@ namespace eVotingSystem
 
         }
 
-        private void AuditorGroupBox_Enter(object sender, EventArgs e)
+        private void AdminControl_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void voterControl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void auditorControl2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminControl2_Load(object sender, EventArgs e)
         {
 
         }

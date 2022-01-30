@@ -14,7 +14,8 @@ namespace eVotingSystem
 {
     public partial class LoginForm : MetroFramework.Forms.MetroForm
     {
-        
+
+       
         public LoginForm()
         {
             // Creates components for the form
