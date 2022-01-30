@@ -22,32 +22,12 @@ namespace eVotingSystem
             
         }
 
-        public bool UserRoleLoggedIn { get; private set; }
-        public Object PassedUser { get; private set; }
+        public bool UserLoggedIn { get; private set; }
+        public LoginValidator PassedUserDetails { get; private set; }
 
-            private void LoginForm_Load(object sender, EventArgs e)
+        private void LoginForm_Load(object sender, EventArgs e)
         {
 
-
-        }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void usernameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void passwordLabel_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -61,14 +41,9 @@ namespace eVotingSystem
 
         }
 
-        private void Login_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(usernameInput.Text))
+            if (string.IsNullOrEmpty(userNameInput.Text))
             {
                 MessageBox.Show("You must enter a valid username");
             }
@@ -78,29 +53,13 @@ namespace eVotingSystem
             }
             else
             {
-                User user = new User();
-                if (user.LoginUser(usernameInput.Text, passwordInput.Text))
+                LoginValidator loginDetails = new LoginValidator();
+                if (loginDetails.LoginUser(userNameInput.Text, passwordInput.Text))
                 {
                     Debug.WriteLine("user found in database");
-
-                    if(user.Role == "Auditor")
-                    {
-                        Auditor auditor = new Auditor(true, user.UserName, user.Password);
-                        UserRoleLoggedIn = true;
-                        this.Close();
-                    }
-                    else if(user.Role == "Admin")
-                    {
-                        Admin admin = new Admin(true, user.UserName, user.Password);
-                        UserRoleLoggedIn = true;
-                        this.Close();
-                    }
-                    else
-                    {
-                        PassedUser = new Voter(true, user.UserName, user.Password);
-                        UserRoleLoggedIn = true;
-                        this.Close();
-                    }
+                    PassedUserDetails = loginDetails;
+                    UserLoggedIn = true;
+                    this.Close();
                 }
                 else
                 {
@@ -112,17 +71,22 @@ namespace eVotingSystem
 
         }
 
-        private void showUsernameButton_Click(object sender, EventArgs e)
+        private void userNameInput_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void showPasswordButton_Click(object sender, EventArgs e)
+        private void passwordInput_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
+        private void userNameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void passwordLabel_Click(object sender, EventArgs e)
         {
 
         }

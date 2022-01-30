@@ -6,66 +6,28 @@ using System.Threading.Tasks;
 
 namespace eVotingSystem
 {
-    class User
+    public class User
     {
-        // try enum for roles
-
-         // char(20)
-        private string userName;
+        private string username;
         private string password;
-        private string role;
+        public string role;
 
-        public string Role { get => role; set => role = value; }
-        public string Password { get => password; set => password = value; }
-        public string UserName { get => userName; set => userName = value; }
 
-        public bool LoginUser(string usernameC, string passwordC)
+        public void SetLoginDetails(string passedRole, string passedUsername, string passedPassword)
         {
-            bool userFound = false;
-
-            DatabaseHelper dbHelp = new DatabaseHelper();
-            string fetchedUserRole = dbHelp.ValidateLogin(usernameC, passwordC);
-            if (fetchedUserRole!= null)
-            {
-                userFound = true;
-                UserName = usernameC;
-                Password = passwordC;
-                Role = fetchedUserRole;
-            }
-            return userFound;
-            
-            //return user info
+            username = passedUsername;
+            password = passedPassword;
+            role = passedRole;
         }
 
-        /**
-        public Object SelectUserRole()
+
+
+        public void GetUserDetails()
         {
-            Object outputRole = null;
-
-            switch (Role)
-            {
-                case "Voter":
-                    outputRole = new Voter(true);
-                    break;
-                case "Admin":
-                    outputRole = new Admin();
-                    break;
-                case "Auditor":
-                    outputRole = new Auditor();
-                    break;
-            }
-            return outputRole;
-        }
-        **/
-        public void LogoutUser()
-        {
-            
-
-
 
 
         }
-
+        
 
     }
 }

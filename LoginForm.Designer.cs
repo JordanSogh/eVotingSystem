@@ -30,142 +30,145 @@ namespace eVotingSystem
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.LoginBackground = new System.Windows.Forms.PictureBox();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
-            this.usernameInput = new System.Windows.Forms.TextBox();
-            this.passwordInput = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
-            this.showPasswordButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.LoginBackground)).BeginInit();
+            this.userNameInput = new MetroFramework.Controls.MetroTextBox();
+            this.passwordInput = new MetroFramework.Controls.MetroTextBox();
+            this.userNameLabel = new MetroFramework.Controls.MetroLabel();
+            this.passwordLabel = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
-            // 
-            // LoginBackground
-            // 
-            this.LoginBackground.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.LoginBackground.Location = new System.Drawing.Point(73, 85);
-            this.LoginBackground.Name = "LoginBackground";
-            this.LoginBackground.Size = new System.Drawing.Size(800, 618);
-            this.LoginBackground.TabIndex = 0;
-            this.LoginBackground.TabStop = false;
-            this.LoginBackground.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.titleLabel.Font = new System.Drawing.Font("Bookman Old Style", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.titleLabel.Location = new System.Drawing.Point(156, 119);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(614, 90);
-            this.titleLabel.TabIndex = 1;
-            this.titleLabel.Text = "eVotingSystem";
-            this.titleLabel.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // usernameLabel
-            // 
-            this.usernameLabel.AutoSize = true;
-            this.usernameLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.usernameLabel.Font = new System.Drawing.Font("Calibri", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.usernameLabel.Location = new System.Drawing.Point(156, 327);
-            this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(178, 45);
-            this.usernameLabel.TabIndex = 2;
-            this.usernameLabel.Text = "Username";
-            this.usernameLabel.Click += new System.EventHandler(this.usernameLabel_Click);
-            // 
-            // passwordLabel
-            // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.passwordLabel.Font = new System.Drawing.Font("Calibri", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.passwordLabel.Location = new System.Drawing.Point(166, 412);
-            this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(168, 45);
-            this.passwordLabel.TabIndex = 3;
-            this.passwordLabel.Text = "Password";
-            this.passwordLabel.Click += new System.EventHandler(this.passwordLabel_Click);
-            // 
-            // usernameInput
-            // 
-            this.usernameInput.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.usernameInput.Location = new System.Drawing.Point(440, 332);
-            this.usernameInput.Name = "usernameInput";
-            this.usernameInput.Size = new System.Drawing.Size(242, 42);
-            this.usernameInput.TabIndex = 4;
-            this.usernameInput.Text = "userName";
-            this.usernameInput.TextChanged += new System.EventHandler(this.usernameInput_TextChanged);
-            // 
-            // passwordInput
-            // 
-            this.passwordInput.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.passwordInput.Location = new System.Drawing.Point(440, 416);
-            this.passwordInput.Name = "passwordInput";
-            this.passwordInput.Size = new System.Drawing.Size(242, 42);
-            this.passwordInput.TabIndex = 5;
-            this.passwordInput.Text = "password";
-            this.passwordInput.TextChanged += new System.EventHandler(this.passwordInput_TextChanged);
             // 
             // loginButton
             // 
-            this.loginButton.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.loginButton.Location = new System.Drawing.Point(440, 534);
+            this.loginButton.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
+            this.loginButton.Location = new System.Drawing.Point(441, 412);
+            this.loginButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(141, 40);
+            this.loginButton.Size = new System.Drawing.Size(160, 46);
             this.loginButton.TabIndex = 6;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // showPasswordButton
+            // userNameInput
             // 
-            this.showPasswordButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.showPasswordButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("showPasswordButton.BackgroundImage")));
-            this.showPasswordButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.showPasswordButton.Location = new System.Drawing.Point(757, 426);
-            this.showPasswordButton.Name = "showPasswordButton";
-            this.showPasswordButton.Size = new System.Drawing.Size(40, 29);
-            this.showPasswordButton.TabIndex = 8;
-            this.showPasswordButton.UseVisualStyleBackColor = false;
-            this.showPasswordButton.Click += new System.EventHandler(this.showPasswordButton_Click);
+            // 
+            // 
+            // 
+            this.userNameInput.CustomButton.Image = null;
+            this.userNameInput.CustomButton.Location = new System.Drawing.Point(190, 2);
+            this.userNameInput.CustomButton.Name = "";
+            this.userNameInput.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.userNameInput.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.userNameInput.CustomButton.TabIndex = 1;
+            this.userNameInput.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.userNameInput.CustomButton.UseSelectable = true;
+            this.userNameInput.CustomButton.Visible = false;
+            this.userNameInput.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.userNameInput.Lines = new string[] {
+        "userName"};
+            this.userNameInput.Location = new System.Drawing.Point(441, 265);
+            this.userNameInput.MaxLength = 32767;
+            this.userNameInput.Name = "userNameInput";
+            this.userNameInput.PasswordChar = '\0';
+            this.userNameInput.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.userNameInput.SelectedText = "";
+            this.userNameInput.SelectionLength = 0;
+            this.userNameInput.SelectionStart = 0;
+            this.userNameInput.ShortcutsEnabled = true;
+            this.userNameInput.Size = new System.Drawing.Size(228, 40);
+            this.userNameInput.TabIndex = 7;
+            this.userNameInput.Text = "userName";
+            this.userNameInput.UseSelectable = true;
+            this.userNameInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.userNameInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.userNameInput.Click += new System.EventHandler(this.userNameInput_Click);
+            // 
+            // passwordInput
+            // 
+            // 
+            // 
+            // 
+            this.passwordInput.CustomButton.Image = null;
+            this.passwordInput.CustomButton.Location = new System.Drawing.Point(190, 2);
+            this.passwordInput.CustomButton.Name = "";
+            this.passwordInput.CustomButton.Size = new System.Drawing.Size(35, 35);
+            this.passwordInput.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.passwordInput.CustomButton.TabIndex = 1;
+            this.passwordInput.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.passwordInput.CustomButton.UseSelectable = true;
+            this.passwordInput.CustomButton.Visible = false;
+            this.passwordInput.FontSize = MetroFramework.MetroTextBoxSize.Tall;
+            this.passwordInput.Lines = new string[] {
+        "password"};
+            this.passwordInput.Location = new System.Drawing.Point(441, 321);
+            this.passwordInput.MaxLength = 32767;
+            this.passwordInput.Name = "passwordInput";
+            this.passwordInput.PasswordChar = '\0';
+            this.passwordInput.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.passwordInput.SelectedText = "";
+            this.passwordInput.SelectionLength = 0;
+            this.passwordInput.SelectionStart = 0;
+            this.passwordInput.ShortcutsEnabled = true;
+            this.passwordInput.Size = new System.Drawing.Size(228, 40);
+            this.passwordInput.TabIndex = 8;
+            this.passwordInput.Text = "password";
+            this.passwordInput.UseSelectable = true;
+            this.passwordInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.passwordInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.passwordInput.Click += new System.EventHandler(this.passwordInput_Click);
+            // 
+            // userNameLabel
+            // 
+            this.userNameLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.userNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.userNameLabel.Location = new System.Drawing.Point(283, 265);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(143, 40);
+            this.userNameLabel.TabIndex = 9;
+            this.userNameLabel.Text = "Username";
+            this.userNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.userNameLabel.Click += new System.EventHandler(this.userNameLabel_Click);
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.passwordLabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.passwordLabel.Location = new System.Drawing.Point(283, 321);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(143, 40);
+            this.passwordLabel.TabIndex = 10;
+            this.passwordLabel.Text = "Password";
+            this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.passwordLabel.Click += new System.EventHandler(this.passwordLabel_Click);
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(982, 753);
-            this.Controls.Add(this.showPasswordButton);
-            this.Controls.Add(this.loginButton);
-            this.Controls.Add(this.passwordInput);
-            this.Controls.Add(this.usernameInput);
+            this.ClientSize = new System.Drawing.Size(982, 602);
             this.Controls.Add(this.passwordLabel);
-            this.Controls.Add(this.usernameLabel);
-            this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.LoginBackground);
+            this.Controls.Add(this.userNameLabel);
+            this.Controls.Add(this.passwordInput);
+            this.Controls.Add(this.userNameInput);
+            this.Controls.Add(this.loginButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LoginForm";
-            this.Text = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 16);
+            this.Text = "Login Form";
             this.Load += new System.EventHandler(this.LoginForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.LoginBackground)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox LoginBackground;
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Label usernameLabel;
-        private System.Windows.Forms.Label passwordLabel;
-        private System.Windows.Forms.TextBox usernameInput;
-        private System.Windows.Forms.TextBox passwordInput;
         private System.Windows.Forms.Button loginButton;
-        private System.Windows.Forms.Button showPasswordButton;
+        private MetroFramework.Controls.MetroTextBox userNameInput;
+        private MetroFramework.Controls.MetroTextBox passwordInput;
+        private MetroFramework.Controls.MetroLabel userNameLabel;
+        private MetroFramework.Controls.MetroLabel passwordLabel;
     }
 }
 

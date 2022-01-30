@@ -30,6 +30,7 @@ namespace eVotingSystem
             
             using ( sqliteCommand = new SQLiteCommand("SELECT role FROM User WHERE userName = @username AND password =@password", connection))
             {
+                //FIX so it just sees if there is a record and not get role
                 sqliteCommand.Parameters.AddWithValue("@username", usernameC);
                 sqliteCommand.Parameters.AddWithValue("@password", passwordC);
                 var returnValue = sqliteCommand.ExecuteScalar();
@@ -43,5 +44,7 @@ namespace eVotingSystem
 
             return userRole;
         }
+
+        
     }
 }

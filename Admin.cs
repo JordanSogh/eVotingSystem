@@ -6,18 +6,17 @@ using System.Threading.Tasks;
 
 namespace eVotingSystem
 {
-    class Admin : User
+     public class Admin
     {
-        private bool loggedIn;
-        private string userName;
-        private string password;
-        private string role = "Admin";
 
-        public Admin(bool loggedInC, string userNameC, string passwordC)
-        {
-            loggedIn = loggedInC;
-            userName = userNameC;
-            password = passwordC;
+        public void CreateUser() {
+        
         }
+
+        public void DeleteUser()
+        {
+
+        }
+        
     }
 }

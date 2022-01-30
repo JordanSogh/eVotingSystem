@@ -14,16 +14,15 @@ namespace eVotingSystem
         [STAThread]
         static void Main()
         {
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             LoginForm loginform = new LoginForm();
             Application.Run(loginform);
 
-
-            if (loginform.UserRoleLoggedIn)
+            if (loginform.UserLoggedIn)
             {
-                Application.Run(new MainForm(loginform.PassedUser));
+                Application.Run(new MainForm(loginform.PassedUserDetails));
             }
         }
     }

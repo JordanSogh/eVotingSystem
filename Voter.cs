@@ -6,21 +6,13 @@ using System.Threading.Tasks;
 
 namespace eVotingSystem
 {
-     class Voter : User
+     public class Voter
     {
-        private bool loggedIn;
-        private string userName;
-        private string password;
-        private string role = "Voter";
-
-        public Voter(bool loggedInC, string userNameC, string passwordC)
-        {
-            loggedIn = loggedInC;
-            userName = userNameC;
-            password = passwordC;
-        }
-
         
+
+        public void Vote() {
+        
+        }
         
 
     }
