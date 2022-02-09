@@ -116,6 +116,5 @@ namespace eVotingSystem
 
         private MetroFramework.Controls.MetroLabel roleLabel;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        
     }
 }

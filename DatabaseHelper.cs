@@ -1,4 +1,8 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Data.SQLite;
 
 namespace eVotingSystem
 {
@@ -6,31 +10,49 @@ namespace eVotingSystem
     {
         private string ConnectionString = @"Data source = C:\Users\Jordan Soghomonian\source\repos\eVotingSystem\VotingDB.db; Version = 3; New = true; Compress = True;";
 
+        
         private SQLiteConnection CreateConnection()
         {
             SQLiteConnection sqliteConn = new SQLiteConnection(ConnectionString);
-            
-                try
-                {
-                    sqliteConn.Open();
-                }
-                catch
-                {
 
-                }
-                return sqliteConn;
+            try
+            {
+                sqliteConn.Open();
+            }
+            catch
+            {
+
+            }
+            return sqliteConn;
         }
 
         // Transcation scope
+        private DataTable ExecuteRead(string query)
+        {
 
+            using (var conn = CreateConnection())
+            {
+                using (var command = new SQLiteCommand(query, conn))
+                {
+
+                    var dataAdapter = new SQLiteDataAdapter(command);
+
+                    var datatable = new DataTable();
+                    dataAdapter.Fill(datatable);
+
+                    dataAdapter.Dispose();
+                    return datatable;
+                }
+            }
+        }
         public string ValidateLogin(string usernameC, string passwordC)
         {
             string userRole = null;
             SQLiteConnection connection = CreateConnection();
-            
+
             SQLiteCommand sqliteCommand;
-            
-            using ( sqliteCommand = new SQLiteCommand("SELECT role FROM User WHERE userName = @username AND password =@password", connection))
+
+            using (sqliteCommand = new SQLiteCommand("SELECT role FROM User WHERE userName = @username AND password =@password", connection))
             {
                 //FIX so it just sees if there is a record and not get role
                 sqliteCommand.Parameters.AddWithValue("@username", usernameC);
@@ -46,21 +68,18 @@ namespace eVotingSystem
 
             return userRole;
         }
-        
+
         public void CreateCampaign(string nameC, int lengthC, bool isCurrentC)
         {
 
 
             SQLiteConnection connection = CreateConnection();
 
-            SQLiteCommand sqliteCommand;
 
-            using (sqliteCommand = connection.CreateCommand())
+
+            using (SQLiteCommand sqliteCommand = connection.CreateCommand())
             {
                 string createString = "UPDATE Campaign SET IsCurrent = 0 WHERE IsCurrent = 1; INSERT INTO Campaign ( CampaignName, CampaignLength, IsCurrent ) VALUES ( @Name, @Length, @iSCurrent );";
-
-                sqliteCommand.Parameters.AddWithValue("@false", 0);
-                sqliteCommand.Parameters.AddWithValue("@true", 1);
 
                 sqliteCommand.Parameters.AddWithValue("@Name", nameC);
                 sqliteCommand.Parameters.AddWithValue("@Length", lengthC);
@@ -74,8 +93,72 @@ namespace eVotingSystem
 
         }
 
-      
+        public void DeleteCampaign(string nameC)
+        {
+
+            SQLiteConnection connection = CreateConnection();
+
+            SQLiteCommand sqliteCommand;
+
+            using (sqliteCommand = connection.CreateCommand())
+            {
+                string deleteString = "DELETE FROM Campaign WHERE CampaignName = @Name;";
+
+                sqliteCommand.Parameters.AddWithValue("@Name", nameC);
+                sqliteCommand.CommandText = deleteString;
+                sqliteCommand.ExecuteNonQuery();
+
+            }
+
+            connection.Close();
+
+        }
+    
+
+    public Campaign GetCurrentCampaign()
+    {
+        SQLiteConnection connection = CreateConnection();
+
+            SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT CampaignName,CampaignLength,IsCurrent,CampaignType FROM Campaign WHERE isCurrent = 1 ", connection);
+ 
+            DataTable dt = ExecuteRead(sqliteCommand.CommandText);
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                return null;
+            }
+
+            string name = Convert.ToString(dt.Rows[0]["CampaignName"]);
+            int length = Convert.ToInt32(dt.Rows[0]["CampaignLength"]);
+            bool isCurrent = Convert.ToBoolean(dt.Rows[0]["IsCurrent"]);
+            Campaign returnCampaign = new Campaign(name, length, isCurrent);
+            
+
+            connection.Close();
+
+        return returnCampaign;
     }
+        public List<string> GetCurrentCampaignVoteOptions(string campaignNameC)
+        {
+            SQLiteConnection connection = CreateConnection();
 
+            SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT VoteDescription FROM CampaignVotes WHERE Campaign = @Campaign", connection);
+            sqliteCommand.Parameters.AddWithValue("@Campaign", campaignNameC);
 
+            List<string> listReturned = new List<string>();
+
+            using (var reader = sqliteCommand.ExecuteReader())
+            {
+
+                while (reader.Read())
+                {
+                    listReturned.Add(reader.GetString(0));
+                }
+            }
+
+            connection.Close();
+
+            return listReturned;
+        }
+    }
 }

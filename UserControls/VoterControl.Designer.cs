@@ -36,7 +36,7 @@ namespace eVotingSystem.UserControls
             // VoteButton
             // 
             this.VoteButton.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.VoteButton.Location = new System.Drawing.Point(574, 450);
+            this.VoteButton.Location = new System.Drawing.Point(574, 531);
             this.VoteButton.Name = "VoteButton";
             this.VoteButton.Size = new System.Drawing.Size(197, 83);
             this.VoteButton.TabIndex = 3;
@@ -63,6 +63,7 @@ namespace eVotingSystem.UserControls
             this.Controls.Add(this.VoteButton);
             this.Name = "VoterControl";
             this.Size = new System.Drawing.Size(1354, 687);
+            this.Load += new System.EventHandler(this.VoterControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

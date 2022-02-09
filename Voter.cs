@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 namespace eVotingSystem
 {
      public class Voter
-    {
-        
+    { 
 
+        DatabaseHelper dbHelp = new DatabaseHelper();
         public void Vote() {
         
         }
-        
 
+        public Campaign getCurrentCampaign()
+        {
+            return dbHelp.GetCurrentCampaign(); 
+        }
     }
 }
