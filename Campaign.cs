@@ -27,11 +27,6 @@ namespace eVotingSystem
 
         }
 
-        public void CreateNewCampaign()
-        {
-            dbHelp.CreateCampaign(name,length,isCurrent);
-        }
-
         public void DeleteCampaign()
         {
             dbHelp.DeleteCampaign(name);

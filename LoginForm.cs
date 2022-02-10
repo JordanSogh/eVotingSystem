@@ -24,7 +24,7 @@ namespace eVotingSystem
         }
 
         public bool UserLoggedIn { get; private set; }
-        public LoginValidator PassedUserDetails { get; private set; }
+        public LoginUser PassedUserDetails { get; private set; }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
@@ -54,8 +54,8 @@ namespace eVotingSystem
             }
             else
             {
-                LoginValidator loginDetails = new LoginValidator();
-                if (loginDetails.LoginUser(userNameInput.Text, passwordInput.Text))
+                LoginUser loginDetails = new LoginUser();
+                if (loginDetails.ValidateAndLoginUser(userNameInput.Text, passwordInput.Text))
                 {
                     Debug.WriteLine("user found in database");
                     PassedUserDetails = loginDetails;

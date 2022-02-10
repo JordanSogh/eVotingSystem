@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace eVotingSystem
 {
-    public class LoginValidator
+    public class LoginUser
     {
         private string userName;
         private string password;
@@ -17,7 +17,7 @@ namespace eVotingSystem
         public string UserName { get => userName; set => userName = value; }
         public string Role { get => role; set => role = value; }
 
-        public bool LoginUser(string usernameC, string passwordC)
+        public bool ValidateAndLoginUser(string usernameC, string passwordC)
         {
             bool userFound = false;
 
