@@ -8,18 +8,18 @@ namespace eVotingSystem
 {
      public class Voter: User
     {
-       
-        
-        DatabaseHelper dbHelp = new DatabaseHelper();
-        public void Vote(int voteIDC, string CurrentCampaignC, string usernameC, string passwordC) {
 
-            dbHelp.CreateVote(voteIDC,CurrentCampaignC,usernameC,passwordC);
+        DatabaseHelper dbHelp = new DatabaseHelper();
+        public void Vote(int voteID, string CurrentCampaign, string username, string password, string ballotDesc) {
+
+            dbHelp.CreateVote(voteID,CurrentCampaign,username,password,ballotDesc);
 
         }
 
-        public Campaign getCurrentCampaign()
+        public bool hasAlreadyVoted(string username)
         {
-            return dbHelp.GetCurrentCampaign(); 
+            DatabaseHelper dbHelp = new DatabaseHelper();
+            return dbHelp.HasAlreadyVoted(username);
         }
     }
 }

@@ -6,26 +6,29 @@ using System.Threading.Tasks;
 
 namespace eVotingSystem
 {
-     public class Admin
+     public class Admin:User
     {
         DatabaseHelper dbHelp = new DatabaseHelper();
-        public void CreateNewCampaign(string nameC, int lengthC)
+        public void CreateNewCampaign(string name, int length)
         {
             DatabaseHelper dbHelp = new DatabaseHelper();
-            dbHelp.CreateCampaign(nameC, lengthC);
+            dbHelp.CreateCampaign(name, length);
         }
 
-        public void DeleteUser(string userNameC)
+        public void CreateNewCampaignOptions(List<string> optionsList, string campaign)
         {
             DatabaseHelper dbHelp = new DatabaseHelper();
-            dbHelp.DeleteUser(userNameC);
+            dbHelp.CreateCampaignOptions(optionsList, campaign);
         }
-        public Campaign getCurrentCampaign()
+        public void DeleteUser(string userName)
         {
-            return dbHelp.GetCurrentCampaign();
+            DatabaseHelper dbHelp = new DatabaseHelper();
+            dbHelp.DeleteUser(userName);
         }
-        public void CreateUser() {
-        
+
+        public void CreateUser(string username, string password, string role) {
+            DatabaseHelper dbHelp = new DatabaseHelper();
+            dbHelp.AddUser( username,password,role);
         }
 
         public void DeleteUser()

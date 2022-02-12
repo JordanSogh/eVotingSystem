@@ -19,11 +19,11 @@ namespace eVotingSystem
         public string Name { get => name; set => name = value; }
         public bool IsCurrent { get => isCurrent; set => isCurrent = value; }
 
-        public Campaign(string nameC, int lengthC, bool isCurrentC)
+        public Campaign(string name, int length, bool isCurrent)
         {
-            this.name = nameC;
-            this.length = lengthC;
-            this.isCurrent = isCurrentC;
+            this.name = name;
+            this.length = length;
+            this.isCurrent = isCurrent;
 
         }
 

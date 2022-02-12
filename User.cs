@@ -8,18 +8,11 @@ namespace eVotingSystem
 {
         public abstract class User
         {
-
-
-        public void SetUserName(string username)
+        DatabaseHelper dbHelp = new DatabaseHelper();
+        public Campaign getCurrentCampaign()
         {
-
+            return dbHelp.GetCurrentCampaign();
         }
-        public string Setpassword(string password)
-        {
-
-            return password;
-        }
-
 
     }
 }

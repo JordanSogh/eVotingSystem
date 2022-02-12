@@ -60,7 +60,11 @@ namespace eVotingSystem
                     Debug.WriteLine("user found in database");
                     PassedUserDetails = loginDetails;
                     UserLoggedIn = true;
-                    this.Close();
+                    this.Hide();
+                    MainForm mainForm = new MainForm(loginDetails, this);
+                    mainForm.Show();
+                    userNameInput.Text = "";
+                    passwordInput.Text = "";
                 }
                 else
                 {

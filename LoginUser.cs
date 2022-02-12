@@ -17,17 +17,17 @@ namespace eVotingSystem
         public string UserName { get => userName; set => userName = value; }
         public string Role { get => role; set => role = value; }
 
-        public bool ValidateAndLoginUser(string usernameC, string passwordC)
+        public bool ValidateAndLoginUser(string username, string password)
         {
             bool userFound = false;
 
             DatabaseHelper dbHelp = new DatabaseHelper();
-            string fetchedUserRole = dbHelp.ValidateLogin(usernameC, passwordC);
+            string fetchedUserRole = dbHelp.ValidateLogin(username, password);
             if (fetchedUserRole!= null)
             {
                 userFound = true;
-                UserName = usernameC;
-                Password = passwordC;
+                UserName = username;
+                Password = password;
                 Role = fetchedUserRole;
             }
             return userFound;

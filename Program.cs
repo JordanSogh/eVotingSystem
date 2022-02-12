@@ -20,10 +20,6 @@ namespace eVotingSystem
             LoginForm loginform = new LoginForm();
             Application.Run(loginform);
 
-            if (loginform.UserLoggedIn)
-            {
-                Application.Run(new MainForm(loginform.PassedUserDetails));
-            }
         }
     }
 }

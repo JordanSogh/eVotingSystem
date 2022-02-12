@@ -35,6 +35,8 @@ namespace eVotingSystem
             this.passwordInput = new MetroFramework.Controls.MetroTextBox();
             this.userNameLabel = new MetroFramework.Controls.MetroLabel();
             this.passwordLabel = new MetroFramework.Controls.MetroLabel();
+            this.loginFormLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.backgroundLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // loginButton
@@ -65,7 +67,7 @@ namespace eVotingSystem
             this.userNameInput.CustomButton.Visible = false;
             this.userNameInput.FontSize = MetroFramework.MetroTextBoxSize.Tall;
             this.userNameInput.Lines = new string[] {
-        "userName"};
+        "userAuditor"};
             this.userNameInput.Location = new System.Drawing.Point(441, 265);
             this.userNameInput.MaxLength = 32767;
             this.userNameInput.Name = "userNameInput";
@@ -77,7 +79,7 @@ namespace eVotingSystem
             this.userNameInput.ShortcutsEnabled = true;
             this.userNameInput.Size = new System.Drawing.Size(228, 40);
             this.userNameInput.TabIndex = 7;
-            this.userNameInput.Text = "userName";
+            this.userNameInput.Text = "userAuditor";
             this.userNameInput.UseSelectable = true;
             this.userNameInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.userNameInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -103,7 +105,7 @@ namespace eVotingSystem
             this.passwordInput.Location = new System.Drawing.Point(441, 321);
             this.passwordInput.MaxLength = 32767;
             this.passwordInput.Name = "passwordInput";
-            this.passwordInput.PasswordChar = '\0';
+            this.passwordInput.PasswordChar = '●';
             this.passwordInput.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.passwordInput.SelectedText = "";
             this.passwordInput.SelectionLength = 0;
@@ -113,6 +115,7 @@ namespace eVotingSystem
             this.passwordInput.TabIndex = 8;
             this.passwordInput.Text = "password";
             this.passwordInput.UseSelectable = true;
+            this.passwordInput.UseSystemPasswordChar = true;
             this.passwordInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.passwordInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.passwordInput.Click += new System.EventHandler(this.passwordInput_Click);
@@ -141,6 +144,26 @@ namespace eVotingSystem
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.passwordLabel.Click += new System.EventHandler(this.passwordLabel_Click);
             // 
+            // loginFormLabel1
+            // 
+            this.loginFormLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.loginFormLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.loginFormLabel1.Location = new System.Drawing.Point(283, 191);
+            this.loginFormLabel1.Name = "loginFormLabel1";
+            this.loginFormLabel1.Size = new System.Drawing.Size(449, 40);
+            this.loginFormLabel1.TabIndex = 11;
+            this.loginFormLabel1.Text = "Please Enter Your Vote Login Details";
+            this.loginFormLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // backgroundLabel
+            // 
+            this.backgroundLabel.BackColor = System.Drawing.Color.White;
+            this.backgroundLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.backgroundLabel.Location = new System.Drawing.Point(257, 179);
+            this.backgroundLabel.Name = "backgroundLabel";
+            this.backgroundLabel.Size = new System.Drawing.Size(514, 346);
+            this.backgroundLabel.TabIndex = 12;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -148,16 +171,19 @@ namespace eVotingSystem
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(982, 602);
+            this.Controls.Add(this.loginFormLabel1);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.passwordInput);
             this.Controls.Add(this.userNameInput);
             this.Controls.Add(this.loginButton);
+            this.Controls.Add(this.backgroundLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "LoginForm";
             this.Padding = new System.Windows.Forms.Padding(20, 60, 20, 16);
-            this.Text = "Login Form";
+            this.Resizable = false;
+            this.Text = "eVotingSystemJS";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
 
@@ -169,6 +195,8 @@ namespace eVotingSystem
         private MetroFramework.Controls.MetroTextBox passwordInput;
         private MetroFramework.Controls.MetroLabel userNameLabel;
         private MetroFramework.Controls.MetroLabel passwordLabel;
+        private MetroFramework.Controls.MetroLabel loginFormLabel1;
+        private System.Windows.Forms.Label backgroundLabel;
     }
 }
 

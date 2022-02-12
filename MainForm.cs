@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,30 +15,30 @@ namespace eVotingSystem
     public partial class MainForm : MetroForm
     {
         private LoginUser PassedUserDetails;
+        private LoginForm PassedLoginForm;
+        private int optionSelected = -1;
 
-        private int optionSelected;
+        private Voter voter;
+        private Admin admin;
+        private Auditor auditor;
 
-        Voter voter;
-        Admin admin;
-        Auditor auditor;
+        private CheckBox[] checkboxes;
 
-        CheckBox[] checkboxes;
-
-
+        private List<string> voteOptionslistToAdd = new List<string>();
 
 
         Campaign campaign;
-        public MainForm(LoginUser passedDetailsC)
+        public MainForm(LoginUser passedDetails, LoginForm loginForm)
         {
             InitializeComponent();
-            PassedUserDetails = passedDetailsC;
-
+            PassedUserDetails = passedDetails;
+            PassedLoginForm = loginForm;
         }
 
         private void LoginForm1_Load(object sender, EventArgs e)
         {
 
-          
+
 
             if (PassedUserDetails.Role == "Voter")
             {
@@ -54,12 +55,12 @@ namespace eVotingSystem
                 campaign = admin.getCurrentCampaign();
                 RenderAdminUI();
             }
-            else if(PassedUserDetails.Role == "Auditor")
+            else if (PassedUserDetails.Role == "Auditor")
             {
                 auditor = new Auditor();
                 campaign = auditor.getCurrentCampaign();
                 roleLabel.Text = "Auditor";
-
+                RenderAuditorUI();
             };
 
 
@@ -131,7 +132,15 @@ namespace eVotingSystem
 
         private void RenderVoterUI()
         {
-            RenderDynamicOptions();
+            if (!voter.hasAlreadyVoted(PassedUserDetails.UserName)) {
+                RenderDynamicOptions();
+            }
+            else
+            {
+                userAlreadyVotedLabel.Show();
+                VoteButton.Hide();
+                logOutButton.Show();
+            }
             PopulateCampaign();
             voterPanel.Visible = true;
 
@@ -140,22 +149,25 @@ namespace eVotingSystem
         {
             PopulateCampaign();
             adminPanel.Visible = true;
-  
+            logOutButton.Show();
         }
         private void RenderAuditorUI()
         {
-
+            PopulateCampaign();
+            auditorPanel.Visible = true;
+            logOutButton.Show();
+            PopulateCampaignsListBox();
         }
         private void RenderDynamicOptions()
         {
-            
+
 
             List<string> voteOptionslist = campaign.GetCampaignVoteOptionsCampaign();
             checkboxes = new CheckBox[voteOptionslist.Count()];
 
             if (voteOptionslist.Count() > 0)
             {
-               
+
 
                 int innitialpoint = 150;
 
@@ -171,7 +183,7 @@ namespace eVotingSystem
                     checkboxes[i].Location = new Point(600, innitialpoint);
                     checkboxes[i].Click += new System.EventHandler(this.choiceCheckbox_Click);
                     voterPanel.Controls.Add(checkboxes[i]);
-                   
+
                 }
             }
             else
@@ -179,7 +191,7 @@ namespace eVotingSystem
                 Label noCampaignVotesLabel = new Label();
                 noCampaignVotesLabel.Text = "No Campaign Votes Found";
                 noCampaignVotesLabel.AutoSize = true;
-                noCampaignVotesLabel.Location = new Point(580,150);
+                noCampaignVotesLabel.Location = new Point(580, 150);
                 voterPanel.Controls.Add(noCampaignVotesLabel);
 
             }
@@ -198,23 +210,54 @@ namespace eVotingSystem
         }
         private void choiceCheckbox_Click(object sender, EventArgs e)
         {
-            
+
             CheckBox checkbox = (sender as CheckBox);
             foreach (CheckBox c in checkboxes)
             {
                 if (c != checkbox)
                 {
                     c.Checked = false;
-                } 
+                }
+
             }
 
-            var findCheckboxNum= Array.FindIndex(checkboxes, c => c  == checkbox);
-            optionSelected = Convert.ToInt32(findCheckboxNum);
+            var findCheckboxNum = Array.FindIndex(checkboxes, c => c == checkbox);
+
+            if (checkboxes[findCheckboxNum].Checked)
+            {
+                optionSelected = Convert.ToInt32(findCheckboxNum);
+
+            }
+            else
+            {
+                optionSelected = -1;
+            }
+
+
         }
         private void VoteButton_Click(object sender, EventArgs e)
         {
+            string optionDescription = "";
 
-            voter.Vote(1, campaign.Name, PassedUserDetails.UserName, PassedUserDetails.Password);
+
+            if (optionSelected != -1 && !voter.hasAlreadyVoted(PassedUserDetails.UserName))
+            {
+                List<string> voteOptionslist = campaign.GetCampaignVoteOptionsCampaign();
+                optionDescription = voteOptionslist[optionSelected];
+                voter.Vote(optionSelected, campaign.Name, PassedUserDetails.UserName, PassedUserDetails.Password, optionDescription);
+                foreach (CheckBox c in checkboxes)
+                {
+                    c.Hide();
+                }
+                userAlreadyVotedLabel.Text = "Thank you for Voting";
+                userAlreadyVotedLabel.Show();
+                VoteButton.Hide();
+                logOutButton.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Voting Option");
+            }
         }
 
         private void campaignLabel_Click(object sender, EventArgs e)
@@ -238,7 +281,15 @@ namespace eVotingSystem
             createNewCampaignPanel.Visible = false;
             deleteUserPanel.Visible = false;
         }
+        private void mainForm_Closing(Object senderm, FormClosingEventArgs e)
+        {
+            // Developmetn
 
+
+
+
+
+        }
         private void deleteUser_Click_1(object sender, EventArgs e)
         {
             deleteUserPanel.Visible = true;
@@ -255,7 +306,7 @@ namespace eVotingSystem
 
         private void createUserPanel_Paint(object sender, PaintEventArgs e)
         {
-         
+
         }
 
         private void usernameTextbox_TextChanged(object sender, EventArgs e)
@@ -285,15 +336,38 @@ namespace eVotingSystem
 
         private void completeCreateCampaign_Click(object sender, EventArgs e)
         {
-            admin.CreateNewCampaign(campaignNameTextbox.Text, Convert.ToInt32(campaignLengthTextbox.Text));
-            campaign = admin.getCurrentCampaign();
-            PopulateCampaign();
-            createNewCampaignPanel.Visible = false;
+            createCampaignButton();
         }
-
+        private void completeCreateCampaign_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
         private void completeAddUser_Click(object sender, EventArgs e)
         {
-            createUserPanel.Visible = false;
+
+            if (usernameTextbox.Text != "" && passwordTextbox.Text != "" && roleTextbox.Text != "")
+            {
+                if (roleTextbox.Text == "Voter" || roleTextbox.Text == "Admin" || roleTextbox.Text == "Auditor")
+                {
+
+
+                    admin.CreateUser(usernameTextbox.Text, passwordTextbox.Text, roleTextbox.Text);
+                    createUserPanel.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Please provide role as either Voter, Admin or Auditor");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill in the relevant fields");
+            }
+
+
 
         }
 
@@ -306,11 +380,12 @@ namespace eVotingSystem
         {
             admin.DeleteUser(deleteUsernameTextbox.Text);
             deleteUserPanel.Visible = false;
+            deleteUsernameTextbox.Text = "";
         }
 
         private void createNewCampaignPanel_Paint(object sender, PaintEventArgs e)
         {
-          
+
         }
 
         private void metroLabel2_Click(object sender, EventArgs e)
@@ -322,5 +397,122 @@ namespace eVotingSystem
         {
 
         }
+
+        private void voteOptionTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void createCampaignVotes_Click(object sender, EventArgs e)
+        {
+            createCampaignButton();
+        }
+
+        private void createCampaignButton()
+        {
+            if (campaignNameTextbox.Text != "" && campaignLengthTextbox.Text != "" && voteOptionsListbox.Items.Count > 1)
+            {
+                admin.CreateNewCampaign(campaignNameTextbox.Text.ToString(), Convert.ToInt32(campaignLengthTextbox.Text));
+                admin.CreateNewCampaignOptions(voteOptionslistToAdd, campaignNameTextbox.Text);
+                campaign = admin.getCurrentCampaign();
+                PopulateCampaign();
+                createNewCampaignPanel.Visible = false;
+                campaignNameTextbox.Text = "";
+                campaignLengthTextbox.Text = "";
+                voteOptionsListbox.Items.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Please Fill Campaign Name and Length. Then create ballot options (minimum 2).");
+            }
+
+
+        }
+
+        private void voteOptionsListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void addVoteOptionToList()
+        {
+            if (voteOptionTextbox.Text != "")
+            {
+                voteOptionslistToAdd.Add(voteOptionTextbox.Text);
+                voteOptionsListbox.Items.Add(voteOptionTextbox.Text);
+                voteOptionTextbox.Text = "";
+            }
+        }
+
+        private void addVoteOptionButton_Click(object sender, EventArgs e)
+        {
+            addVoteOptionToList();
+        }
+
+        private void logOutButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            PassedLoginForm.Show();
+        }
+
+        private void PopulateCampaignsListBox()
+        {
+            List<string> allCampaignslist = auditor.GetAllCampaigns();
+
+            foreach (string c in allCampaignslist)
+            {
+                selectCampaignAuditListBox.Items.Add(c);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            allVotesCountListBox.Items.Clear();
+            if (selectCampaignAuditListBox.SelectedItem != null)
+            {
+
+                totalVotesDisplayLabel.Text = auditor.CountAllVotes(selectCampaignAuditListBox.SelectedItem.ToString()).ToString();
+                winnerDisplayLabel.Text = auditor.CalculateWinner(selectCampaignAuditListBox.SelectedItem.ToString());
+                
+                foreach (string c in auditor.CalculateOrder(selectCampaignAuditListBox.SelectedItem.ToString()))
+                {
+                    allVotesCountListBox.Items.Add(c);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please Select a Campaign to Audit");
+            }
+        }
+
+        private void totalVotesDisplayLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     }
+ 
+    
+
