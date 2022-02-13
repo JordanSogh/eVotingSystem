@@ -99,38 +99,47 @@ namespace eVotingSystem
         private void RenderDynamicOptions()
         {
             //Renders Vote Options Dynamically
-            List<string> voteOptionslist = voter.GetCampaignVoteOptionsCampaign(campaign.Name);
-            checkboxes = new CheckBox[voteOptionslist.Count()];
-
-            if (voteOptionslist.Count() > 0)
+            if (campaign != null)
             {
+                List<string> voteOptionslist = voter.GetCampaignVoteOptionsCampaign(campaign.Name);
+                checkboxes = new CheckBox[voteOptionslist.Count()];
 
-
-                int innitialpoint = 50;
-
-                int yDistanceOffset = 30;
-
-                for (int i = 0; i < voteOptionslist.Count; i++)
+                if (voteOptionslist.Count() > 0)
                 {
-                    checkboxes[i] = new CheckBox();
 
-                    checkboxes[i].AutoSize = true;
-                    innitialpoint += yDistanceOffset;
-                    checkboxes[i].Text = voteOptionslist[i].ToString();
-                    checkboxes[i].Location = new Point(540, innitialpoint);
-                    checkboxes[i].Click += new System.EventHandler(this.choiceCheckbox_Click);
-                    voterPanel.Controls.Add(checkboxes[i]);
 
+                    int innitialpoint = 50;
+
+                    int yDistanceOffset = 30;
+
+                    for (int i = 0; i < voteOptionslist.Count; i++)
+                    {
+                        checkboxes[i] = new CheckBox();
+
+                        checkboxes[i].AutoSize = true;
+                        innitialpoint += yDistanceOffset;
+                        checkboxes[i].Text = voteOptionslist[i].ToString();
+                        checkboxes[i].Location = new Point(540, innitialpoint);
+                        checkboxes[i].Click += new System.EventHandler(this.choiceCheckbox_Click);
+                        voterPanel.Controls.Add(checkboxes[i]);
+
+                    }
+                }
+                else
+                {
+                    Label noCampaignVotesLabel = new Label();
+                    noCampaignVotesLabel.Text = "No Campaign Votes Found";
+                    noCampaignVotesLabel.AutoSize = true;
+                    noCampaignVotesLabel.Location = new Point(560, 50);
+                    voterPanel.Controls.Add(noCampaignVotesLabel);
+                    logOutButton.Show();
                 }
             }
             else
             {
                 Label noCampaignVotesLabel = new Label();
                 noCampaignVotesLabel.Text = "No Campaign Votes Found";
-                noCampaignVotesLabel.AutoSize = true;
-                noCampaignVotesLabel.Location = new Point(560, 50);
-                voterPanel.Controls.Add(noCampaignVotesLabel);
-
+                logOutButton.Show();
             }
         }
 
