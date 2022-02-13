@@ -10,7 +10,6 @@ namespace eVotingSystem
     {
         DatabaseHelper _dbHelp = new DatabaseHelper();
 
-
         public List<string> GetCompletedCampaignVotes(string campaign)
         {
             return _dbHelp.GetCompletedCampaignVotes(campaign);
@@ -30,9 +29,9 @@ namespace eVotingSystem
             int allVotes = _dbHelp.GetAllVotes(campaign).Count();
             return allVotes;
         }
-
         public string CalculateWinner(string campaign)
         {
+            // Retrieves the Votes of a Campaign then Calculates the winner by grouping and sorting in order. Returns the winner.
             string winner = "";
 
             List<Vote> allVotes = _dbHelp.GetAllVotes(campaign);
@@ -54,6 +53,7 @@ namespace eVotingSystem
 
         public List<string> CalculateOrder(string campaign)
         {
+            // Retrieves the Votes of a Campaign and then sorts them in order. Returns a list with the ordered options and their votes.
             List<string> orderList = new List<string>();
 
             List<Vote> allVotes = _dbHelp.GetAllVotes(campaign);

@@ -11,7 +11,6 @@ namespace eVotingSystem
         private string _userName;
         private string _password;
         private string _role;
-
         
         public string Password { get => _password; set => _password = value; }
         public string UserName { get => _userName; set => _userName = value; }
@@ -19,6 +18,7 @@ namespace eVotingSystem
 
         public bool ValidateAndLoginUser(string username, string password)
         {
+            //Validates if user exists and returns their role if yes
             bool userFound = false;
 
             DatabaseHelper dbHelp = new DatabaseHelper();
@@ -34,18 +34,6 @@ namespace eVotingSystem
             
             //return user info
         }
-        
-
-
-        public void LogoutUser()
-        {
-            
-
-
-
-
-        }
-
 
     }
 }

@@ -15,7 +15,7 @@ namespace eVotingSystem
             return _dbHelp.CreateVote(voteID, CurrentCampaign, username, password, ballotDesc);
         }
 
-        public bool hasAlreadyVoted(string username)
+        public bool HasAlreadyVoted(string username)
         {
             return _dbHelp.HasAlreadyVoted(username);
         }

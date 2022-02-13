@@ -34,11 +34,11 @@ namespace eVotingSystem
 
                     var dataAdapter = new SQLiteDataAdapter(command);
 
-                    var datatable = new DataTable();
-                    dataAdapter.Fill(datatable);
+                    var dataTable = new DataTable();
+                    dataAdapter.Fill(dataTable);
 
                     dataAdapter.Dispose();
-                    return datatable;
+                    return dataTable;
                 }
             }
         }
@@ -180,6 +180,7 @@ namespace eVotingSystem
 
             connection.Close();
 
+            // Returns List of Vote options of a Current Campaign
             return listReturned;
         }
         public bool CreateVote(int voteID, string CurrentCampaign, string username, string password, string ballotDesc)
@@ -296,7 +297,7 @@ namespace eVotingSystem
             }
 
             connection.Close();
-
+         
             return returnValue;
         }
         public List<string> GetCompletedCampaignVotes(string campaignName)
@@ -320,6 +321,7 @@ namespace eVotingSystem
 
             connection.Close();
 
+            //Return List of specific campaign votes
             return listReturned;
         }
         public List<string> GetAllCampaigns()
@@ -342,6 +344,7 @@ namespace eVotingSystem
 
             connection.Close();
 
+            //Return List of all campaigns
             return listReturned;
         }
         public List<Vote> GetAllVotes(string campaignName)
@@ -370,6 +373,7 @@ namespace eVotingSystem
 
             connection.Close();
 
+            //Return List of Votes
             return listReturned;
         }
     }
