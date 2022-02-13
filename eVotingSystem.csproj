@@ -13,16 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="VotingDB.db" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="bin\Debug\net5.0-windows\eVotingSystem.deps.json" />
     <Content Include="bin\Debug\net5.0-windows\eVotingSystem.runtimeconfig.dev.json" />
     <Content Include="bin\Debug\net5.0-windows\eVotingSystem.runtimeconfig.json" />
-    <Content Include="VotingDB.db">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>

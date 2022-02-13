@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 
 namespace eVotingSystem
 {
     public class DatabaseHelper
     {
-        private string ConnectionString = @"Data source = C:\Users\Jordan Soghomonian\source\repos\eVotingSystem\VotingDB.db; Version = 3; New = true; Compress = True;";
-
+        //private string ConnectionString = @"Data source = C:\Users\Jordan Soghomonian\source\repos\eVotingSystem\VotingDB.db; Version = 3; New = true; Compress = True;";
+        private string ConnectionString = @"Data source = " + Directory.GetCurrentDirectory().ToString() + "\\VotingDB.db;" + " version = 3; New = true; Compress = True;";
         private SQLiteConnection CreateConnection()
         {
             //Creates Connection to Sqlite Databas. Returns Connection
