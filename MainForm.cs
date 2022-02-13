@@ -106,8 +106,6 @@ namespace eVotingSystem
 
                 if (voteOptionslist.Count() > 0)
                 {
-
-
                     int innitialpoint = 50;
 
                     int yDistanceOffset = 30;
