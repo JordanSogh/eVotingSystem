@@ -8,7 +8,7 @@ namespace eVotingSystem
 {
     public class DatabaseHelper
     {
-        //private string ConnectionString = @"Data source = C:\Users\Jordan Soghomonian\source\repos\eVotingSystem\VotingDB.db; Version = 3; New = true; Compress = True;";
+        // Gets the Connection String from the relative directory by using GetCurrentDirectory. Database must always been where the exe. is
         private string ConnectionString = @"Data source = " + Directory.GetCurrentDirectory().ToString() + "\\VotingDB.db;" + " version = 3; New = true; Compress = True;";
         private SQLiteConnection CreateConnection()
         {
@@ -75,19 +75,24 @@ namespace eVotingSystem
             SQLiteConnection connection = CreateConnection();
             using (SQLiteCommand sqliteCommand = connection.CreateCommand())
             {
-                string createString = "UPDATE Campaign SET IsCurrent = 0 WHERE IsCurrent = 1; INSERT INTO Campaign ( CampaignName, CampaignLength, IsCurrent ) VALUES ( @Name, @Length, @iSCurrent );";
+                string createString = "UPDATE Campaign SET IsCurrent = 0 WHERE IsCurrent = 1 AND CampaignName != @Name; INSERT INTO Campaign ( CampaignName, CampaignLength, IsCurrent ) VALUES ( @Name, @Length, @iSCurrent );";
 
                 sqliteCommand.Parameters.AddWithValue("@Name", name);
                 sqliteCommand.Parameters.AddWithValue("@Length", length);
                 sqliteCommand.Parameters.AddWithValue("@isCurrent", 1);
                 sqliteCommand.CommandText = createString;
-
-                if (sqliteCommand.ExecuteNonQuery() > 0)
+                try
                 {
-                    success = true;
+                    if (sqliteCommand.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
+                }
+                catch (SQLiteException)
+                {
+
                 }
             }
-
             connection.Close();
             return success;
         }
@@ -114,9 +119,16 @@ namespace eVotingSystem
                 sqliteCommand.Parameters.AddWithValue("@VoteDescription", optionsDesc);
                 sqliteCommand.Parameters.AddWithValue("@VoteNumber", i);
 
-                if (sqliteCommand.ExecuteNonQuery() > 0)
+                try
                 {
-                    success = true;
+                    if (sqliteCommand.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
+                }
+                catch (SQLiteException)
+                {
+
                 }
 
             }
@@ -251,12 +263,17 @@ namespace eVotingSystem
                 sqliteCommand.Parameters.AddWithValue("@role", role);
                 sqliteCommand.Parameters.AddWithValue("@Voted", 0);
                 sqliteCommand.CommandText = insertString;
-
-                if (sqliteCommand.ExecuteNonQuery() > 0)
+                try
                 {
-                    success = true;
+                    if (sqliteCommand.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
                 }
+                catch (SQLiteException)
+                {
 
+                }
             }
 
             connection.Close();

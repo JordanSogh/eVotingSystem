@@ -265,11 +265,14 @@ namespace eVotingSystem
                     if(admin.CreateUser(usernameTextbox.Text, passwordTextbox.Text, roleTextbox.Text)){
 
                         createUserPanel.Visible = false;
-                        MessageBox.Show(usernameTextbox.Text + "Created");
+                        MessageBox.Show("User Created");
+                        usernameTextbox.Text = "";
+                        passwordTextbox.Text = "";
+                        roleTextbox.Text = "";
                     }
                     else
                     {
-                        MessageBox.Show("Failed to Add User");
+                        MessageBox.Show("Failed To Add User As Username Already Exists");
                     }
                 }
                 else
@@ -330,7 +333,7 @@ namespace eVotingSystem
                 }
                 else
                 {
-                    MessageBox.Show("Create Campaign Failed");
+                    MessageBox.Show("Create Campaign Failed As Campaign Already Exists");
                 }
 
             }
@@ -406,7 +409,10 @@ namespace eVotingSystem
             }
         }
 
-
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            voteOptionsListbox.Items.Clear();
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //*UNUSED CONTROL EVENTS     ALL ARE EMPTY*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -573,6 +579,8 @@ namespace eVotingSystem
         {
 
         }
+
+      
     }
     }
  
