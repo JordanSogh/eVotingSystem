@@ -43,6 +43,14 @@ namespace eVotingSystem
             this.createCampaign = new System.Windows.Forms.Button();
             this.deleteUser = new System.Windows.Forms.Button();
             this.addUser = new System.Windows.Forms.Button();
+            this.createUserPanel = new System.Windows.Forms.Panel();
+            this.completeAddUser = new System.Windows.Forms.Button();
+            this.roleTextbox = new System.Windows.Forms.TextBox();
+            this.passwordTextbox = new System.Windows.Forms.TextBox();
+            this.usernameTextbox = new System.Windows.Forms.TextBox();
+            this.roleLabel2 = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.deleteUserPanel = new System.Windows.Forms.Panel();
             this.completeDeleteUser = new System.Windows.Forms.Button();
             this.deleteUsernameTextbox = new System.Windows.Forms.TextBox();
@@ -57,34 +65,26 @@ namespace eVotingSystem
             this.campaignLengthTextbox = new System.Windows.Forms.TextBox();
             this.campaignNameTextbox = new System.Windows.Forms.TextBox();
             this.campaignNameLabel = new System.Windows.Forms.Label();
-            this.createUserPanel = new System.Windows.Forms.Panel();
-            this.completeAddUser = new System.Windows.Forms.Button();
-            this.roleTextbox = new System.Windows.Forms.TextBox();
-            this.passwordTextbox = new System.Windows.Forms.TextBox();
-            this.usernameTextbox = new System.Windows.Forms.TextBox();
-            this.roleLabel2 = new System.Windows.Forms.Label();
-            this.passwordLabel = new System.Windows.Forms.Label();
-            this.usernameLabel = new System.Windows.Forms.Label();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.auditorPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.totalVotesLabel = new System.Windows.Forms.Label();
+            this.winnerLabel = new System.Windows.Forms.Label();
+            this.winnerDisplayLabel = new System.Windows.Forms.Label();
+            this.totalVotesDisplayLabel = new System.Windows.Forms.Label();
             this.allVotesCountListBox = new System.Windows.Forms.ListBox();
             this.selectCampaignAuditListBox = new System.Windows.Forms.ListBox();
             this.goAuditButton = new System.Windows.Forms.Button();
-            this.totalVotesDisplayLabel = new System.Windows.Forms.Label();
-            this.winnerDisplayLabel = new System.Windows.Forms.Label();
-            this.winnerLabel = new System.Windows.Forms.Label();
-            this.totalVotesLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.voterPanel.SuspendLayout();
             this.adminPanel.SuspendLayout();
+            this.createUserPanel.SuspendLayout();
             this.deleteUserPanel.SuspendLayout();
             this.createNewCampaignPanel.SuspendLayout();
-            this.createUserPanel.SuspendLayout();
             this.auditorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,7 +166,7 @@ namespace eVotingSystem
             // 
             // logOutButton
             // 
-            this.logOutButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.logOutButton.BackColor = System.Drawing.Color.Silver;
             this.logOutButton.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.logOutButton.Location = new System.Drawing.Point(1204, 686);
             this.logOutButton.Margin = new System.Windows.Forms.Padding(4);
@@ -185,9 +185,9 @@ namespace eVotingSystem
             this.adminPanel.Controls.Add(this.createCampaign);
             this.adminPanel.Controls.Add(this.deleteUser);
             this.adminPanel.Controls.Add(this.addUser);
+            this.adminPanel.Controls.Add(this.createNewCampaignPanel);
             this.adminPanel.Controls.Add(this.createUserPanel);
             this.adminPanel.Controls.Add(this.deleteUserPanel);
-            this.adminPanel.Controls.Add(this.createNewCampaignPanel);
             this.adminPanel.Location = new System.Drawing.Point(67, 120);
             this.adminPanel.Margin = new System.Windows.Forms.Padding(4);
             this.adminPanel.Name = "adminPanel";
@@ -198,203 +198,42 @@ namespace eVotingSystem
             // 
             // createCampaign
             // 
+            this.createCampaign.BackColor = System.Drawing.Color.Silver;
             this.createCampaign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createCampaign.Location = new System.Drawing.Point(111, 247);
+            this.createCampaign.Location = new System.Drawing.Point(91, 238);
             this.createCampaign.Margin = new System.Windows.Forms.Padding(4);
             this.createCampaign.Name = "createCampaign";
             this.createCampaign.Size = new System.Drawing.Size(201, 81);
             this.createCampaign.TabIndex = 8;
             this.createCampaign.Text = "Create New Campaign";
-            this.createCampaign.UseVisualStyleBackColor = true;
+            this.createCampaign.UseVisualStyleBackColor = false;
             this.createCampaign.Click += new System.EventHandler(this.createCampaign_Click_1);
             // 
             // deleteUser
             // 
+            this.deleteUser.BackColor = System.Drawing.Color.Silver;
             this.deleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteUser.Location = new System.Drawing.Point(111, 145);
+            this.deleteUser.Location = new System.Drawing.Point(91, 133);
             this.deleteUser.Margin = new System.Windows.Forms.Padding(4);
             this.deleteUser.Name = "deleteUser";
             this.deleteUser.Size = new System.Drawing.Size(201, 81);
             this.deleteUser.TabIndex = 7;
             this.deleteUser.Text = "Delete User";
-            this.deleteUser.UseVisualStyleBackColor = true;
+            this.deleteUser.UseVisualStyleBackColor = false;
             this.deleteUser.Click += new System.EventHandler(this.deleteUser_Click_1);
             // 
             // addUser
             // 
+            this.addUser.BackColor = System.Drawing.Color.Silver;
             this.addUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addUser.Location = new System.Drawing.Point(111, 42);
+            this.addUser.Location = new System.Drawing.Point(91, 26);
             this.addUser.Margin = new System.Windows.Forms.Padding(4);
             this.addUser.Name = "addUser";
             this.addUser.Size = new System.Drawing.Size(201, 81);
             this.addUser.TabIndex = 6;
             this.addUser.Text = "Add User";
-            this.addUser.UseVisualStyleBackColor = true;
+            this.addUser.UseVisualStyleBackColor = false;
             this.addUser.Click += new System.EventHandler(this.addUser_Click);
-            // 
-            // deleteUserPanel
-            // 
-            this.deleteUserPanel.Controls.Add(this.completeDeleteUser);
-            this.deleteUserPanel.Controls.Add(this.deleteUsernameTextbox);
-            this.deleteUserPanel.Controls.Add(this.label3);
-            this.deleteUserPanel.Location = new System.Drawing.Point(347, 42);
-            this.deleteUserPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.deleteUserPanel.Name = "deleteUserPanel";
-            this.deleteUserPanel.Size = new System.Drawing.Size(300, 229);
-            this.deleteUserPanel.TabIndex = 10;
-            this.deleteUserPanel.Visible = false;
-            this.deleteUserPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.deleteUserPanel_Paint);
-            // 
-            // completeDeleteUser
-            // 
-            this.completeDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.completeDeleteUser.Location = new System.Drawing.Point(95, 172);
-            this.completeDeleteUser.Margin = new System.Windows.Forms.Padding(4);
-            this.completeDeleteUser.Name = "completeDeleteUser";
-            this.completeDeleteUser.Size = new System.Drawing.Size(184, 41);
-            this.completeDeleteUser.TabIndex = 14;
-            this.completeDeleteUser.Text = "Delete User";
-            this.completeDeleteUser.UseVisualStyleBackColor = true;
-            this.completeDeleteUser.Click += new System.EventHandler(this.completeDeleteUser_Click);
-            // 
-            // deleteUsernameTextbox
-            // 
-            this.deleteUsernameTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteUsernameTextbox.Location = new System.Drawing.Point(24, 46);
-            this.deleteUsernameTextbox.Margin = new System.Windows.Forms.Padding(4);
-            this.deleteUsernameTextbox.Name = "deleteUsernameTextbox";
-            this.deleteUsernameTextbox.Size = new System.Drawing.Size(255, 28);
-            this.deleteUsernameTextbox.TabIndex = 3;
-            this.deleteUsernameTextbox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 14);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 24);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "UserName";
-            // 
-            // createNewCampaignPanel
-            // 
-            this.createNewCampaignPanel.Controls.Add(this.addVoteOptionButton);
-            this.createNewCampaignPanel.Controls.Add(this.voteOptionsListbox);
-            this.createNewCampaignPanel.Controls.Add(this.voteOptionTextbox);
-            this.createNewCampaignPanel.Controls.Add(this.voteOption);
-            this.createNewCampaignPanel.Controls.Add(this.createCampaignVotes);
-            this.createNewCampaignPanel.Controls.Add(this.campaignLengthLabel);
-            this.createNewCampaignPanel.Controls.Add(this.campaignLengthTextbox);
-            this.createNewCampaignPanel.Controls.Add(this.campaignNameTextbox);
-            this.createNewCampaignPanel.Controls.Add(this.campaignNameLabel);
-            this.createNewCampaignPanel.Location = new System.Drawing.Point(355, 42);
-            this.createNewCampaignPanel.Margin = new System.Windows.Forms.Padding(4);
-            this.createNewCampaignPanel.Name = "createNewCampaignPanel";
-            this.createNewCampaignPanel.Size = new System.Drawing.Size(594, 479);
-            this.createNewCampaignPanel.TabIndex = 10;
-            this.createNewCampaignPanel.Visible = false;
-            this.createNewCampaignPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.createNewCampaignPanel_Paint);
-            // 
-            // addVoteOptionButton
-            // 
-            this.addVoteOptionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addVoteOptionButton.Location = new System.Drawing.Point(292, 216);
-            this.addVoteOptionButton.Margin = new System.Windows.Forms.Padding(4);
-            this.addVoteOptionButton.Name = "addVoteOptionButton";
-            this.addVoteOptionButton.Size = new System.Drawing.Size(219, 41);
-            this.addVoteOptionButton.TabIndex = 18;
-            this.addVoteOptionButton.Text = "Add Vote Option";
-            this.addVoteOptionButton.UseVisualStyleBackColor = true;
-            this.addVoteOptionButton.Click += new System.EventHandler(this.addVoteOptionButton_Click);
-            // 
-            // voteOptionsListbox
-            // 
-            this.voteOptionsListbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voteOptionsListbox.FormattingEnabled = true;
-            this.voteOptionsListbox.ItemHeight = 20;
-            this.voteOptionsListbox.Location = new System.Drawing.Point(20, 261);
-            this.voteOptionsListbox.Name = "voteOptionsListbox";
-            this.voteOptionsListbox.Size = new System.Drawing.Size(255, 164);
-            this.voteOptionsListbox.TabIndex = 17;
-            this.voteOptionsListbox.SelectedIndexChanged += new System.EventHandler(this.voteOptionsListbox_SelectedIndexChanged);
-            // 
-            // voteOptionTextbox
-            // 
-            this.voteOptionTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voteOptionTextbox.Location = new System.Drawing.Point(20, 219);
-            this.voteOptionTextbox.Margin = new System.Windows.Forms.Padding(4);
-            this.voteOptionTextbox.Name = "voteOptionTextbox";
-            this.voteOptionTextbox.Size = new System.Drawing.Size(255, 28);
-            this.voteOptionTextbox.TabIndex = 16;
-            this.voteOptionTextbox.TextChanged += new System.EventHandler(this.voteOptionTextbox_TextChanged);
-            // 
-            // voteOption
-            // 
-            this.voteOption.AutoSize = true;
-            this.voteOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.voteOption.Location = new System.Drawing.Point(20, 184);
-            this.voteOption.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.voteOption.Name = "voteOption";
-            this.voteOption.Size = new System.Drawing.Size(110, 24);
-            this.voteOption.TabIndex = 15;
-            this.voteOption.Text = "Vote Option";
-            // 
-            // createCampaignVotes
-            // 
-            this.createCampaignVotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createCampaignVotes.Location = new System.Drawing.Point(334, 414);
-            this.createCampaignVotes.Margin = new System.Windows.Forms.Padding(4);
-            this.createCampaignVotes.Name = "createCampaignVotes";
-            this.createCampaignVotes.Size = new System.Drawing.Size(219, 41);
-            this.createCampaignVotes.TabIndex = 14;
-            this.createCampaignVotes.Text = "Create Campaign";
-            this.createCampaignVotes.UseVisualStyleBackColor = true;
-            this.createCampaignVotes.Click += new System.EventHandler(this.createCampaignVotes_Click);
-            // 
-            // campaignLengthLabel
-            // 
-            this.campaignLengthLabel.AutoSize = true;
-            this.campaignLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.campaignLengthLabel.Location = new System.Drawing.Point(20, 91);
-            this.campaignLengthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.campaignLengthLabel.Name = "campaignLengthLabel";
-            this.campaignLengthLabel.Size = new System.Drawing.Size(238, 24);
-            this.campaignLengthLabel.TabIndex = 13;
-            this.campaignLengthLabel.Text = "Campaign Length (Months)";
-            // 
-            // campaignLengthTextbox
-            // 
-            this.campaignLengthTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.campaignLengthTextbox.Location = new System.Drawing.Point(21, 125);
-            this.campaignLengthTextbox.Margin = new System.Windows.Forms.Padding(4);
-            this.campaignLengthTextbox.Name = "campaignLengthTextbox";
-            this.campaignLengthTextbox.Size = new System.Drawing.Size(255, 28);
-            this.campaignLengthTextbox.TabIndex = 12;
-            this.campaignLengthTextbox.TextChanged += new System.EventHandler(this.campaignLengthTextbox_TextChanged);
-            this.campaignLengthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.completeCreateCampaign_KeyPress);
-            // 
-            // campaignNameTextbox
-            // 
-            this.campaignNameTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.campaignNameTextbox.Location = new System.Drawing.Point(21, 46);
-            this.campaignNameTextbox.Margin = new System.Windows.Forms.Padding(4);
-            this.campaignNameTextbox.Name = "campaignNameTextbox";
-            this.campaignNameTextbox.Size = new System.Drawing.Size(255, 28);
-            this.campaignNameTextbox.TabIndex = 3;
-            this.campaignNameTextbox.TextChanged += new System.EventHandler(this.campaignNameTextbox_TextChanged);
-            // 
-            // campaignNameLabel
-            // 
-            this.campaignNameLabel.AutoSize = true;
-            this.campaignNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.campaignNameLabel.Location = new System.Drawing.Point(17, 14);
-            this.campaignNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.campaignNameLabel.Name = "campaignNameLabel";
-            this.campaignNameLabel.Size = new System.Drawing.Size(152, 24);
-            this.campaignNameLabel.TabIndex = 0;
-            this.campaignNameLabel.Text = "Campaign Name";
             // 
             // createUserPanel
             // 
@@ -415,6 +254,7 @@ namespace eVotingSystem
             // 
             // completeAddUser
             // 
+            this.completeAddUser.BackColor = System.Drawing.Color.Silver;
             this.completeAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.completeAddUser.Location = new System.Drawing.Point(211, 265);
             this.completeAddUser.Margin = new System.Windows.Forms.Padding(4);
@@ -422,7 +262,7 @@ namespace eVotingSystem
             this.completeAddUser.Size = new System.Drawing.Size(157, 41);
             this.completeAddUser.TabIndex = 12;
             this.completeAddUser.Text = "Add User";
-            this.completeAddUser.UseVisualStyleBackColor = true;
+            this.completeAddUser.UseVisualStyleBackColor = false;
             this.completeAddUser.Click += new System.EventHandler(this.completeAddUser_Click);
             // 
             // roleTextbox
@@ -487,6 +327,173 @@ namespace eVotingSystem
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "UserName";
             // 
+            // deleteUserPanel
+            // 
+            this.deleteUserPanel.Controls.Add(this.completeDeleteUser);
+            this.deleteUserPanel.Controls.Add(this.deleteUsernameTextbox);
+            this.deleteUserPanel.Controls.Add(this.label3);
+            this.deleteUserPanel.Location = new System.Drawing.Point(347, 42);
+            this.deleteUserPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteUserPanel.Name = "deleteUserPanel";
+            this.deleteUserPanel.Size = new System.Drawing.Size(300, 229);
+            this.deleteUserPanel.TabIndex = 10;
+            this.deleteUserPanel.Visible = false;
+            this.deleteUserPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.deleteUserPanel_Paint);
+            // 
+            // completeDeleteUser
+            // 
+            this.completeDeleteUser.BackColor = System.Drawing.Color.Silver;
+            this.completeDeleteUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.completeDeleteUser.Location = new System.Drawing.Point(95, 172);
+            this.completeDeleteUser.Margin = new System.Windows.Forms.Padding(4);
+            this.completeDeleteUser.Name = "completeDeleteUser";
+            this.completeDeleteUser.Size = new System.Drawing.Size(184, 41);
+            this.completeDeleteUser.TabIndex = 14;
+            this.completeDeleteUser.Text = "Delete User";
+            this.completeDeleteUser.UseVisualStyleBackColor = false;
+            this.completeDeleteUser.Click += new System.EventHandler(this.completeDeleteUser_Click);
+            // 
+            // deleteUsernameTextbox
+            // 
+            this.deleteUsernameTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteUsernameTextbox.Location = new System.Drawing.Point(24, 46);
+            this.deleteUsernameTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.deleteUsernameTextbox.Name = "deleteUsernameTextbox";
+            this.deleteUsernameTextbox.Size = new System.Drawing.Size(255, 28);
+            this.deleteUsernameTextbox.TabIndex = 3;
+            this.deleteUsernameTextbox.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "UserName";
+            // 
+            // createNewCampaignPanel
+            // 
+            this.createNewCampaignPanel.Controls.Add(this.addVoteOptionButton);
+            this.createNewCampaignPanel.Controls.Add(this.voteOptionsListbox);
+            this.createNewCampaignPanel.Controls.Add(this.voteOptionTextbox);
+            this.createNewCampaignPanel.Controls.Add(this.voteOption);
+            this.createNewCampaignPanel.Controls.Add(this.createCampaignVotes);
+            this.createNewCampaignPanel.Controls.Add(this.campaignLengthLabel);
+            this.createNewCampaignPanel.Controls.Add(this.campaignLengthTextbox);
+            this.createNewCampaignPanel.Controls.Add(this.campaignNameTextbox);
+            this.createNewCampaignPanel.Controls.Add(this.campaignNameLabel);
+            this.createNewCampaignPanel.Location = new System.Drawing.Point(355, 42);
+            this.createNewCampaignPanel.Margin = new System.Windows.Forms.Padding(4);
+            this.createNewCampaignPanel.Name = "createNewCampaignPanel";
+            this.createNewCampaignPanel.Size = new System.Drawing.Size(594, 479);
+            this.createNewCampaignPanel.TabIndex = 10;
+            this.createNewCampaignPanel.Visible = false;
+            this.createNewCampaignPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.createNewCampaignPanel_Paint);
+            // 
+            // addVoteOptionButton
+            // 
+            this.addVoteOptionButton.BackColor = System.Drawing.Color.Silver;
+            this.addVoteOptionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addVoteOptionButton.Location = new System.Drawing.Point(292, 216);
+            this.addVoteOptionButton.Margin = new System.Windows.Forms.Padding(4);
+            this.addVoteOptionButton.Name = "addVoteOptionButton";
+            this.addVoteOptionButton.Size = new System.Drawing.Size(219, 41);
+            this.addVoteOptionButton.TabIndex = 18;
+            this.addVoteOptionButton.Text = "Add Vote Option";
+            this.addVoteOptionButton.UseVisualStyleBackColor = false;
+            this.addVoteOptionButton.Click += new System.EventHandler(this.addVoteOptionButton_Click);
+            // 
+            // voteOptionsListbox
+            // 
+            this.voteOptionsListbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voteOptionsListbox.FormattingEnabled = true;
+            this.voteOptionsListbox.ItemHeight = 20;
+            this.voteOptionsListbox.Location = new System.Drawing.Point(20, 261);
+            this.voteOptionsListbox.Name = "voteOptionsListbox";
+            this.voteOptionsListbox.Size = new System.Drawing.Size(255, 164);
+            this.voteOptionsListbox.TabIndex = 17;
+            this.voteOptionsListbox.SelectedIndexChanged += new System.EventHandler(this.voteOptionsListbox_SelectedIndexChanged);
+            // 
+            // voteOptionTextbox
+            // 
+            this.voteOptionTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voteOptionTextbox.Location = new System.Drawing.Point(20, 219);
+            this.voteOptionTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.voteOptionTextbox.Name = "voteOptionTextbox";
+            this.voteOptionTextbox.Size = new System.Drawing.Size(255, 28);
+            this.voteOptionTextbox.TabIndex = 16;
+            this.voteOptionTextbox.TextChanged += new System.EventHandler(this.voteOptionTextbox_TextChanged);
+            // 
+            // voteOption
+            // 
+            this.voteOption.AutoSize = true;
+            this.voteOption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voteOption.Location = new System.Drawing.Point(20, 184);
+            this.voteOption.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.voteOption.Name = "voteOption";
+            this.voteOption.Size = new System.Drawing.Size(188, 24);
+            this.voteOption.TabIndex = 15;
+            this.voteOption.Text = "Vote Option (10 Max)";
+            // 
+            // createCampaignVotes
+            // 
+            this.createCampaignVotes.BackColor = System.Drawing.Color.Silver;
+            this.createCampaignVotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createCampaignVotes.Location = new System.Drawing.Point(334, 414);
+            this.createCampaignVotes.Margin = new System.Windows.Forms.Padding(4);
+            this.createCampaignVotes.Name = "createCampaignVotes";
+            this.createCampaignVotes.Size = new System.Drawing.Size(219, 41);
+            this.createCampaignVotes.TabIndex = 14;
+            this.createCampaignVotes.Text = "Create Campaign";
+            this.createCampaignVotes.UseVisualStyleBackColor = false;
+            this.createCampaignVotes.Click += new System.EventHandler(this.createCampaignVotes_Click);
+            // 
+            // campaignLengthLabel
+            // 
+            this.campaignLengthLabel.AutoSize = true;
+            this.campaignLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campaignLengthLabel.Location = new System.Drawing.Point(20, 91);
+            this.campaignLengthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.campaignLengthLabel.Name = "campaignLengthLabel";
+            this.campaignLengthLabel.Size = new System.Drawing.Size(238, 24);
+            this.campaignLengthLabel.TabIndex = 13;
+            this.campaignLengthLabel.Text = "Campaign Length (Months)";
+            // 
+            // campaignLengthTextbox
+            // 
+            this.campaignLengthTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campaignLengthTextbox.Location = new System.Drawing.Point(21, 125);
+            this.campaignLengthTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.campaignLengthTextbox.Name = "campaignLengthTextbox";
+            this.campaignLengthTextbox.Size = new System.Drawing.Size(255, 28);
+            this.campaignLengthTextbox.TabIndex = 12;
+            this.campaignLengthTextbox.TextChanged += new System.EventHandler(this.campaignLengthTextbox_TextChanged);
+            this.campaignLengthTextbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.completeCreateCampaign_KeyPress);
+            // 
+            // campaignNameTextbox
+            // 
+            this.campaignNameTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campaignNameTextbox.Location = new System.Drawing.Point(21, 46);
+            this.campaignNameTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.campaignNameTextbox.Name = "campaignNameTextbox";
+            this.campaignNameTextbox.Size = new System.Drawing.Size(255, 28);
+            this.campaignNameTextbox.TabIndex = 3;
+            this.campaignNameTextbox.TextChanged += new System.EventHandler(this.campaignNameTextbox_TextChanged);
+            // 
+            // campaignNameLabel
+            // 
+            this.campaignNameLabel.AutoSize = true;
+            this.campaignNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campaignNameLabel.Location = new System.Drawing.Point(17, 14);
+            this.campaignNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.campaignNameLabel.Name = "campaignNameLabel";
+            this.campaignNameLabel.Size = new System.Drawing.Size(152, 24);
+            this.campaignNameLabel.TabIndex = 0;
+            this.campaignNameLabel.Text = "Campaign Name";
+            // 
             // metroLabel2
             // 
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
@@ -524,6 +531,77 @@ namespace eVotingSystem
             this.auditorPanel.TabIndex = 11;
             this.auditorPanel.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(588, 223);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(383, 29);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Total Votes Per Vote Option (In Order)";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label5
+            // 
+            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label5.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(365, 127);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(200, 25);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Select Campaign to Audit";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label2
+            // 
+            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(36, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(283, 29);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Campaigns";
+            // 
+            // totalVotesLabel
+            // 
+            this.totalVotesLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalVotesLabel.Location = new System.Drawing.Point(651, 172);
+            this.totalVotesLabel.Name = "totalVotesLabel";
+            this.totalVotesLabel.Size = new System.Drawing.Size(198, 29);
+            this.totalVotesLabel.TabIndex = 8;
+            this.totalVotesLabel.Text = "Total Votes In Campaign";
+            // 
+            // winnerLabel
+            // 
+            this.winnerLabel.AutoSize = true;
+            this.winnerLabel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.winnerLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winnerLabel.Location = new System.Drawing.Point(651, 125);
+            this.winnerLabel.Name = "winnerLabel";
+            this.winnerLabel.Size = new System.Drawing.Size(88, 29);
+            this.winnerLabel.TabIndex = 7;
+            this.winnerLabel.Text = "Winner";
+            // 
+            // winnerDisplayLabel
+            // 
+            this.winnerDisplayLabel.AutoSize = true;
+            this.winnerDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.winnerDisplayLabel.Location = new System.Drawing.Point(745, 123);
+            this.winnerDisplayLabel.Name = "winnerDisplayLabel";
+            this.winnerDisplayLabel.Size = new System.Drawing.Size(0, 29);
+            this.winnerDisplayLabel.TabIndex = 6;
+            this.winnerDisplayLabel.Click += new System.EventHandler(this.winnerDisplayLabel_Click);
+            // 
+            // totalVotesDisplayLabel
+            // 
+            this.totalVotesDisplayLabel.AutoSize = true;
+            this.totalVotesDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalVotesDisplayLabel.Location = new System.Drawing.Point(855, 171);
+            this.totalVotesDisplayLabel.Name = "totalVotesDisplayLabel";
+            this.totalVotesDisplayLabel.Size = new System.Drawing.Size(0, 29);
+            this.totalVotesDisplayLabel.TabIndex = 5;
+            // 
             // allVotesCountListBox
             // 
             this.allVotesCountListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -557,44 +635,24 @@ namespace eVotingSystem
             this.goAuditButton.UseVisualStyleBackColor = true;
             this.goAuditButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // totalVotesDisplayLabel
+            // label4
             // 
-            this.totalVotesDisplayLabel.AutoSize = true;
-            this.totalVotesDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVotesDisplayLabel.Location = new System.Drawing.Point(769, 173);
-            this.totalVotesDisplayLabel.Name = "totalVotesDisplayLabel";
-            this.totalVotesDisplayLabel.Size = new System.Drawing.Size(0, 29);
-            this.totalVotesDisplayLabel.TabIndex = 5;
+            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label4.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(566, 43);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(283, 29);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Campaign Result";
             // 
-            // winnerDisplayLabel
+            // label7
             // 
-            this.winnerDisplayLabel.AutoSize = true;
-            this.winnerDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.winnerDisplayLabel.Location = new System.Drawing.Point(769, 125);
-            this.winnerDisplayLabel.Name = "winnerDisplayLabel";
-            this.winnerDisplayLabel.Size = new System.Drawing.Size(0, 29);
-            this.winnerDisplayLabel.TabIndex = 6;
-            // 
-            // winnerLabel
-            // 
-            this.winnerLabel.AutoSize = true;
-            this.winnerLabel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.winnerLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.winnerLabel.Location = new System.Drawing.Point(651, 125);
-            this.winnerLabel.Name = "winnerLabel";
-            this.winnerLabel.Size = new System.Drawing.Size(88, 29);
-            this.winnerLabel.TabIndex = 7;
-            this.winnerLabel.Text = "Winner";
-            // 
-            // totalVotesLabel
-            // 
-            this.totalVotesLabel.AutoSize = true;
-            this.totalVotesLabel.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVotesLabel.Location = new System.Drawing.Point(651, 175);
-            this.totalVotesLabel.Name = "totalVotesLabel";
-            this.totalVotesLabel.Size = new System.Drawing.Size(123, 29);
-            this.totalVotesLabel.TabIndex = 8;
-            this.totalVotesLabel.Text = "Total Votes";
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label7.Location = new System.Drawing.Point(642, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(335, 94);
+            this.label7.TabIndex = 14;
             // 
             // label1
             // 
@@ -606,57 +664,6 @@ namespace eVotingSystem
             this.label1.TabIndex = 9;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
-            // 
-            this.label2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label2.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(283, 29);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Campaigns";
-            // 
-            // label4
-            // 
-            this.label4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label4.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(566, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(283, 29);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Campaign Result";
-            // 
-            // label5
-            // 
-            this.label5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label5.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(365, 127);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(200, 25);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Select Campaign to Audit";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(588, 223);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(383, 29);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Total Votes Per Vote Option (In Order)";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label7
-            // 
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label7.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.label7.Location = new System.Drawing.Point(642, 116);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(335, 94);
-            this.label7.TabIndex = 14;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -667,9 +674,9 @@ namespace eVotingSystem
             this.Controls.Add(this.campaignLabel);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.roleLabel);
-            this.Controls.Add(this.voterPanel);
             this.Controls.Add(this.auditorPanel);
             this.Controls.Add(this.adminPanel);
+            this.Controls.Add(this.voterPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -682,12 +689,12 @@ namespace eVotingSystem
             this.voterPanel.ResumeLayout(false);
             this.voterPanel.PerformLayout();
             this.adminPanel.ResumeLayout(false);
+            this.createUserPanel.ResumeLayout(false);
+            this.createUserPanel.PerformLayout();
             this.deleteUserPanel.ResumeLayout(false);
             this.deleteUserPanel.PerformLayout();
             this.createNewCampaignPanel.ResumeLayout(false);
             this.createNewCampaignPanel.PerformLayout();
-            this.createUserPanel.ResumeLayout(false);
-            this.createUserPanel.PerformLayout();
             this.auditorPanel.ResumeLayout(false);
             this.auditorPanel.PerformLayout();
             this.ResumeLayout(false);

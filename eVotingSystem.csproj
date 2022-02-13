@@ -7,13 +7,77 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="VotingDB.db" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net5.0-windows\eVotingSystem.deps.json" />
+    <Content Include="bin\Debug\net5.0-windows\eVotingSystem.runtimeconfig.dev.json" />
+    <Content Include="bin\Debug\net5.0-windows\eVotingSystem.runtimeconfig.json" />
     <Content Include="VotingDB.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net472\EntityFramework.dll" />
+    <None Include="bin\Debug\net472\EntityFramework.SqlServer.dll" />
+    <None Include="bin\Debug\net472\eVotingSystem.exe" />
+    <None Include="bin\Debug\net472\eVotingSystem.exe.config" />
+    <None Include="bin\Debug\net472\eVotingSystem.pdb" />
+    <None Include="bin\Debug\net472\MetroFramework.Design.dll" />
+    <None Include="bin\Debug\net472\MetroFramework.dll" />
+    <None Include="bin\Debug\net472\MetroFramework.Fonts.dll" />
+    <None Include="bin\Debug\net472\System.Data.SQLite.dll" />
+    <None Include="bin\Debug\net472\System.Data.SQLite.EF6.dll" />
+    <None Include="bin\Debug\net472\System.Data.SQLite.Linq.dll" />
+    <None Include="bin\Debug\net472\VotingDB.db" />
+    <None Include="bin\Debug\net472\x64\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net472\x86\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\database.db" />
+    <None Include="bin\Debug\net5.0-windows\EntityFramework.dll" />
+    <None Include="bin\Debug\net5.0-windows\EntityFramework.SqlServer.dll" />
+    <None Include="bin\Debug\net5.0-windows\eVotingSystem.dll" />
+    <None Include="bin\Debug\net5.0-windows\eVotingSystem.exe" />
+    <None Include="bin\Debug\net5.0-windows\eVotingSystem.pdb" />
+    <None Include="bin\Debug\net5.0-windows\MetroFramework.Design.dll" />
+    <None Include="bin\Debug\net5.0-windows\MetroFramework.dll" />
+    <None Include="bin\Debug\net5.0-windows\MetroFramework.Fonts.dll" />
+    <None Include="bin\Debug\net5.0-windows\ref\eVotingSystem.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\linux-x64\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\osx-x64\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\win-arm64\native\sni.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\win-x64\native\sni.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\win-x64\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\win-x86\native\sni.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\win-x86\native\SQLite.Interop.dll" />
+    <None Include="bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net5.0-windows\System.Data.SqlClient.dll" />
+    <None Include="bin\Debug\net5.0-windows\System.Data.SQLite.dll" />
+    <None Include="bin\Debug\net5.0-windows\System.Data.SQLite.EF6.dll" />
+    <None Include="bin\Debug\net5.0-windows\VotingDB.db" />
+    <None Include="bin\Release\net472\EntityFramework.dll" />
+    <None Include="bin\Release\net472\EntityFramework.SqlServer.dll" />
+    <None Include="bin\Release\net472\eVotingSystem.exe" />
+    <None Include="bin\Release\net472\eVotingSystem.exe.config" />
+    <None Include="bin\Release\net472\eVotingSystem.pdb" />
+    <None Include="bin\Release\net472\MetroFramework.Design.dll" />
+    <None Include="bin\Release\net472\MetroFramework.dll" />
+    <None Include="bin\Release\net472\MetroFramework.Fonts.dll" />
+    <None Include="bin\Release\net472\System.Data.SQLite.dll" />
+    <None Include="bin\Release\net472\System.Data.SQLite.EF6.dll" />
+    <None Include="bin\Release\net472\System.Data.SQLite.Linq.dll" />
+    <None Include="bin\Release\net472\VotingDB.db" />
+    <None Include="bin\Release\net472\x64\SQLite.Interop.dll" />
+    <None Include="bin\Release\net472\x86\SQLite.Interop.dll" />
+    <None Include="eVotingSystem.sln" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +98,113 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\netcoreapp3.0\" />
+    <Folder Include="eVotingSystem\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_44_06\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_44_06\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_50_59\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_50_59\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_52_42\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_52_42\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_54_27\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_54_27\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_54_35\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_54_35\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_55_20\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 22_55_20\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_08_04\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_08_04\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_33_16\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_33_16\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_47_40\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_47_40\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_48_15\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_48_15\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_49_37\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_49_37\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_54_03\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-12 23_54_03\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_18_59\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_18_59\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_25_31\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_25_31\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_25_39\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_25_39\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_26_29\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_26_29\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_39_22\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_39_22\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_39_31\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_39_31\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_41_41\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_41_41\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_41_53\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_41_53\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_45_11\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_45_11\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_45_16\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_45_16\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_50_04\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 00_50_04\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_01_10\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_01_10\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_01_36\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_01_36\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_01_48\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_01_48\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_03_19\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_03_19\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_03_46\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_03_46\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_23_41\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_23_41\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_25_12\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_25_12\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_25_31\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_25_31\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_26_48\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_26_48\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_26_54\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_26_54\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_27_27\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_27_27\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_31_47\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_31_47\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_32_08\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_32_08\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_32_20\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_32_20\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_33_31\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_33_31\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_33_46\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_33_46\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_35_00\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_35_00\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_35_24\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_35_24\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_35_30\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_35_30\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_36_06\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_36_06\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_48_17\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_48_17\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_48_34\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_48_34\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_53_49\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_53_49\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_54_48\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_54_48\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_58_41\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 13_58_41\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 14_17_21\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 14_17_21\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 14_18_06\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 14_18_06\Out\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 14_18_49\In\DESKTOP-8CALAUD\" />
+    <Folder Include="TestResults\Deploy_Jordan Soghomonian 2022-02-13 14_18_49\Out\" />
   </ItemGroup>
 
 </Project>

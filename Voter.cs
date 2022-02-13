@@ -10,16 +10,20 @@ namespace eVotingSystem
     {
 
         DatabaseHelper dbHelp = new DatabaseHelper();
-        public void Vote(int voteID, string CurrentCampaign, string username, string password, string ballotDesc) {
+        public bool Vote(int voteID, string CurrentCampaign, string username, string password, string ballotDesc) {
 
-            dbHelp.CreateVote(voteID,CurrentCampaign,username,password,ballotDesc);
-
+            return dbHelp.CreateVote(voteID, CurrentCampaign, username, password, ballotDesc);
         }
 
         public bool hasAlreadyVoted(string username)
         {
-            DatabaseHelper dbHelp = new DatabaseHelper();
             return dbHelp.HasAlreadyVoted(username);
+        }
+
+        public List<string> GetCampaignVoteOptionsCampaign(string campaign)
+        {
+            List<string> voteOptions = dbHelp.GetCurrentCampaignVoteOptions(campaign);
+            return voteOptions;
         }
     }
 }

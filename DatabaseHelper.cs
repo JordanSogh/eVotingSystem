@@ -1,35 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 
 namespace eVotingSystem
 {
-    internal class DatabaseHelper
+    public class DatabaseHelper
     {
         private string ConnectionString = @"Data source = C:\Users\Jordan Soghomonian\source\repos\eVotingSystem\VotingDB.db; Version = 3; New = true; Compress = True;";
 
-
         private SQLiteConnection CreateConnection()
         {
+            //Creates Connection to Sqlite Databas. Returns Connection
             SQLiteConnection sqliteConn = new SQLiteConnection(ConnectionString);
-
             try
             {
                 sqliteConn.Open();
             }
-            catch
+            catch(SQLiteException ex)
             {
-
+                throw ex;
             }
             return sqliteConn;
         }
 
-        // Transcation scope
         private DataTable ExecuteRead(string query)
         {
-
+            //Used internally in Database Class for retreiving datatables.
             using (var conn = CreateConnection())
             {
                 using (var command = new SQLiteCommand(query, conn))
@@ -47,6 +44,7 @@ namespace eVotingSystem
         }
         public string ValidateLogin(string username, string password)
         {
+            //Validates user details and return the UserRole if found.
             string userRole = null;
             SQLiteConnection connection = CreateConnection();
 
@@ -69,14 +67,11 @@ namespace eVotingSystem
             return userRole;
         }
 
-        public void CreateCampaign(string name, int length)
+        public bool CreateCampaign(string name, int length)
         {
-
-
+            //Creates Campaign with inputted details
+            bool success = false;
             SQLiteConnection connection = CreateConnection();
-
-
-
             using (SQLiteCommand sqliteCommand = connection.CreateCommand())
             {
                 string createString = "UPDATE Campaign SET IsCurrent = 0 WHERE IsCurrent = 1; INSERT INTO Campaign ( CampaignName, CampaignLength, IsCurrent ) VALUES ( @Name, @Length, @iSCurrent );";
@@ -85,16 +80,20 @@ namespace eVotingSystem
                 sqliteCommand.Parameters.AddWithValue("@Length", length);
                 sqliteCommand.Parameters.AddWithValue("@isCurrent", 1);
                 sqliteCommand.CommandText = createString;
-                sqliteCommand.ExecuteNonQuery();
 
+                if (sqliteCommand.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
             }
 
             connection.Close();
-
+            return success;
         }
-        public void CreateCampaignOptions(List<string> optionsList, string campaign)
+        public bool CreateCampaignOptions(List<string> optionsList, string campaign)
         {
-
+            //Creates Campaign Options with inputted details
+            bool success = false;
             string insertString = "INSERT INTO CampaignVotes(Campaign,VoteDescription,VoteNumber) VALUES(@Campaign,@VoteDescription,@VoteNumber);";
 
             SQLiteConnection connection = CreateConnection();
@@ -114,35 +113,19 @@ namespace eVotingSystem
                 sqliteCommand.Parameters.AddWithValue("@VoteDescription", optionsDesc);
                 sqliteCommand.Parameters.AddWithValue("@VoteNumber", i);
 
-                sqliteCommand.ExecuteNonQuery();
+                if (sqliteCommand.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
 
             }
 
             connection.Close();
-
-        }
-        public void DeleteCampaign(string name)
-        {
-
-            SQLiteConnection connection = CreateConnection();
-
-            SQLiteCommand sqliteCommand;
-
-            using (sqliteCommand = connection.CreateCommand())
-            {
-                string deleteString = "DELETE FROM Campaign WHERE CampaignName = @Name;";
-
-                sqliteCommand.Parameters.AddWithValue("@Name", name);
-                sqliteCommand.CommandText = deleteString;
-                sqliteCommand.ExecuteNonQuery();
-
-            }
-
-            connection.Close();
-
+            return success;
         }
         public Campaign GetCurrentCampaign()
         {
+            //Gets Current Campaign and returns Campaign Object
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT CampaignName,CampaignLength,IsCurrent FROM Campaign WHERE isCurrent = 1 ", connection);
@@ -166,6 +149,7 @@ namespace eVotingSystem
         }
         public List<string> GetCurrentCampaignVoteOptions(string campaignName)
         {
+            //Retrieves Current Campaign Options and Returns them as a List
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT VoteDescription FROM CampaignVotes WHERE Campaign = @Campaign", connection);
@@ -188,6 +172,7 @@ namespace eVotingSystem
         }
         public bool CreateVote(int voteID, string CurrentCampaign, string username, string password, string ballotDesc)
         {
+            //Creates Vote with inputted Details. returns True if successful
             bool voteSuccess = false;
             SQLiteConnection connection = CreateConnection();
 
@@ -199,7 +184,9 @@ namespace eVotingSystem
 
                 sqliteCommand.Parameters.AddWithValue("@username", username);
                 sqliteCommand.Parameters.AddWithValue("@password", password);
+
                 var returnValue = (bool)sqliteCommand.ExecuteScalar();
+
                 if (returnValue != true)
                 {
 
@@ -223,9 +210,10 @@ namespace eVotingSystem
             }
             return voteSuccess;
         }
-        public void DeleteUser(string userName)
+        public bool DeleteUser(string userName)
         {
-
+            //Deletes User with inputted values. Return True if user deleted.
+            bool success = false;
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand;
@@ -236,16 +224,19 @@ namespace eVotingSystem
 
                 sqliteCommand.Parameters.AddWithValue("@userName", userName);
                 sqliteCommand.CommandText = deleteString;
-                sqliteCommand.ExecuteNonQuery();
-
+                
+                if (sqliteCommand.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
             }
-
             connection.Close();
-
+            return success;
         }
-        public void AddUser(string username, string password, string role)
+        public bool AddUser(string username, string password, string role)
         {
-
+            //Adds User with inputted values. Return True if user deleted.
+            bool success = false;
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand;
@@ -259,15 +250,20 @@ namespace eVotingSystem
                 sqliteCommand.Parameters.AddWithValue("@role", role);
                 sqliteCommand.Parameters.AddWithValue("@Voted", 0);
                 sqliteCommand.CommandText = insertString;
-                sqliteCommand.ExecuteNonQuery();
+
+                if (sqliteCommand.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
 
             }
 
             connection.Close();
-
+            return success;
         }
         public bool HasAlreadyVoted(string username)
         {
+            //Check to see if the Voter has already Voted. Returns True/false.
             bool returnValue = true;
 
             SQLiteConnection connection = CreateConnection();
@@ -288,6 +284,7 @@ namespace eVotingSystem
         }
         public List<string> GetCompletedCampaignVotes(string campaignName)
         {
+            // Get a List of all the Campaign Votes of a selected campaign
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT Campaign, Ballot FROM Vote WHERE Campaign = @Campaign;", connection);
@@ -310,6 +307,7 @@ namespace eVotingSystem
         }
         public List<string> GetAllCampaigns()
         {
+            // Get a List of all the Campaigns
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT CampaignName, CampaignLength, IsCurrent FROM Campaign;", connection);
@@ -331,6 +329,7 @@ namespace eVotingSystem
         }
         public List<Vote> GetAllVotes(string campaignName)
         {
+            // Get a List of all the Votes of a specific Campaign
             SQLiteConnection connection = CreateConnection();
 
             SQLiteCommand sqliteCommand = new SQLiteCommand("SELECT Ballot, BallotDescription FROM Vote WHERE Campaign = @Campaign;", connection);

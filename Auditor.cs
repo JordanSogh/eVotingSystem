@@ -26,7 +26,7 @@ namespace eVotingSystem
         }
 
         public int CountAllVotes(string campaign)
-        {
+        {  
             int allVotes = dbHelp.GetAllVotes(campaign).Count();
             return allVotes;
         }

@@ -11,7 +11,6 @@ namespace eVotingSystem
         private int ballot;
         private string ballotDescription;
 
-
         public int Ballot { get => ballot; set => ballot = value; }
         public string BallotDescription { get => ballotDescription; set => ballotDescription = value; }
     }

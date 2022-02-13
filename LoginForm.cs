@@ -44,6 +44,7 @@ namespace eVotingSystem
 
         private void loginButton_Click(object sender, EventArgs e)
         {
+
             if (string.IsNullOrEmpty(userNameInput.Text))
             {
                 MessageBox.Show("You must enter a valid username");
@@ -53,7 +54,7 @@ namespace eVotingSystem
                 MessageBox.Show("You must enter a valid password");
             }
             else
-            {
+            { 
                 LoginUser loginDetails = new LoginUser();
                 if (loginDetails.ValidateAndLoginUser(userNameInput.Text, passwordInput.Text))
                 {
@@ -69,6 +70,7 @@ namespace eVotingSystem
                 else
                 {
                     Debug.WriteLine("user not found in database");
+                    MessageBox.Show("Incorrect Login Details");
                 }
             }
 

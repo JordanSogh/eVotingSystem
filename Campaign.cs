@@ -9,11 +9,9 @@ namespace eVotingSystem
 
     public class Campaign
     {
-        private int length = 2;
-        private string name = "test2";
-        private bool isCurrent = true;
-
-        DatabaseHelper dbHelp = new DatabaseHelper();
+        private int length;
+        private string name;
+        private bool isCurrent;
 
         public int Length { get => length; set => length = value; }
         public string Name { get => name; set => name = value; }
@@ -25,17 +23,6 @@ namespace eVotingSystem
             this.length = length;
             this.isCurrent = isCurrent;
 
-        }
-
-        public void DeleteCampaign()
-        {
-            dbHelp.DeleteCampaign(name);
-        }
-
-        public List<string> GetCampaignVoteOptionsCampaign()
-        {
-            List<string> voteOptions = dbHelp.GetCurrentCampaignVoteOptions(name);
-            return voteOptions;
         }
 
 

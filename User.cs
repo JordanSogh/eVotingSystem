@@ -8,9 +8,9 @@ namespace eVotingSystem
 {
         public abstract class User
         {
-        DatabaseHelper dbHelp = new DatabaseHelper();
         public Campaign getCurrentCampaign()
         {
+            DatabaseHelper dbHelp = new DatabaseHelper();
             return dbHelp.GetCurrentCampaign();
         }
 

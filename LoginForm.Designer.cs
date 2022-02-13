@@ -42,7 +42,7 @@ namespace eVotingSystem
             // loginButton
             // 
             this.loginButton.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
-            this.loginButton.Location = new System.Drawing.Point(441, 412);
+            this.loginButton.Location = new System.Drawing.Point(408, 430);
             this.loginButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(160, 46);
@@ -148,18 +148,18 @@ namespace eVotingSystem
             // 
             this.loginFormLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.loginFormLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.loginFormLabel1.Location = new System.Drawing.Point(283, 191);
+            this.loginFormLabel1.Location = new System.Drawing.Point(259, 192);
             this.loginFormLabel1.Name = "loginFormLabel1";
             this.loginFormLabel1.Size = new System.Drawing.Size(449, 40);
             this.loginFormLabel1.TabIndex = 11;
-            this.loginFormLabel1.Text = "Please Enter Your Vote Login Details";
+            this.loginFormLabel1.Text = "Please Enter Your Login Details";
             this.loginFormLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // backgroundLabel
             // 
             this.backgroundLabel.BackColor = System.Drawing.Color.White;
             this.backgroundLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.backgroundLabel.Location = new System.Drawing.Point(257, 179);
+            this.backgroundLabel.Location = new System.Drawing.Point(230, 180);
             this.backgroundLabel.Name = "backgroundLabel";
             this.backgroundLabel.Size = new System.Drawing.Size(514, 346);
             this.backgroundLabel.TabIndex = 12;
