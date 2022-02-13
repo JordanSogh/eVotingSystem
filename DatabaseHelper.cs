@@ -9,11 +9,11 @@ namespace eVotingSystem
     public class DatabaseHelper
     {
         // Gets the Connection String from the relative directory by using GetCurrentDirectory. Database must always been where the exe. is
-        private string ConnectionString = @"Data source = " + Directory.GetCurrentDirectory().ToString() + "\\VotingDB.db;" + " version = 3; New = true; Compress = True;";
+        private string _ConnectionString = @"Data source = " + Directory.GetCurrentDirectory().ToString() + "\\VotingDB.db;" + " version = 3; New = true; Compress = True;";
         private SQLiteConnection CreateConnection()
         {
             //Creates Connection to Sqlite Databas. Returns Connection
-            SQLiteConnection sqliteConn = new SQLiteConnection(ConnectionString);
+            SQLiteConnection sqliteConn = new SQLiteConnection(_ConnectionString);
             try
             {
                 sqliteConn.Open();
@@ -24,7 +24,6 @@ namespace eVotingSystem
             }
             return sqliteConn;
         }
-
         private DataTable ExecuteRead(string query)
         {
             //Used internally in Database Class for retreiving datatables.

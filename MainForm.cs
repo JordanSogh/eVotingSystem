@@ -10,53 +10,55 @@ namespace eVotingSystem
     public partial class MainForm : MetroForm
     {
         //Information passed from LoginForm
-        private LoginUser PassedUserDetails;
-        private LoginForm PassedLoginForm;
+        private LoginUser _PassedUserDetails;
+        private LoginForm _PassedLoginForm;
 
-        private int optionSelected = -1;
+        private int _optionSelected = -1;
 
         // Instantiates Objects for each potential user.
-        private Voter voter;
-        private Admin admin;
-        private Auditor auditor;
+        private Voter _voter;
+        private Admin _admin;
+        private Auditor _auditor;
 
         //Checkboxes for Vote Options
-        private CheckBox[] checkboxes;
+        private CheckBox[] _checkboxes;
 
         //List that holds Vote Options
-        private List<string> voteOptionslistToAdd = new List<string>();
+        private List<string> _voteOptionslistToAdd = new List<string>();
 
         //Current Campaign
-        private Campaign campaign;
+        private Campaign _campaign;
+
+        //Initializes mainForm
         public MainForm(LoginUser passedDetails, LoginForm loginForm)
         {
             InitializeComponent();
-            PassedUserDetails = passedDetails;
-            PassedLoginForm = loginForm;
+            _PassedUserDetails = passedDetails;
+            _PassedLoginForm = loginForm;
         }
 
         private void LoginForm1_Load(object sender, EventArgs e)
         { 
             //Selects the User Role and loads the relevant UI
-            if (PassedUserDetails.Role == "Voter")
+            if (_PassedUserDetails.Role == "Voter")
             {
-                voter = new Voter();
-                campaign = voter.getCurrentCampaign();
+                _voter = new Voter();
+                _campaign = _voter.getCurrentCampaign();
                 roleLabel.Text = "Voter";
                 RenderVoterUI();
 
             }
-            else if (PassedUserDetails.Role == "Admin")
+            else if (_PassedUserDetails.Role == "Admin")
             {
-                admin = new Admin();
+                _admin = new Admin();
                 roleLabel.Text = "Admin";
-                campaign = admin.getCurrentCampaign();
+                _campaign = _admin.getCurrentCampaign();
                 RenderAdminUI();
             }
-            else if (PassedUserDetails.Role == "Auditor")
+            else if (_PassedUserDetails.Role == "Auditor")
             {
-                auditor = new Auditor();
-                campaign = auditor.getCurrentCampaign();
+                _auditor = new Auditor();
+                _campaign = _auditor.getCurrentCampaign();
                 roleLabel.Text = "Auditor";
                 RenderAuditorUI();
             };
@@ -67,7 +69,7 @@ namespace eVotingSystem
         private void RenderVoterUI()
         {
             //Renders Voter UI
-            if (!voter.hasAlreadyVoted(PassedUserDetails.UserName))
+            if (!_voter.hasAlreadyVoted(_PassedUserDetails.UserName))
             {
                 RenderDynamicOptions();
             }
@@ -99,10 +101,10 @@ namespace eVotingSystem
         private void RenderDynamicOptions()
         {
             //Renders Vote Options Dynamically
-            if (campaign != null)
+            if (_campaign != null)
             {
-                List<string> voteOptionslist = voter.GetCampaignVoteOptionsCampaign(campaign.Name);
-                checkboxes = new CheckBox[voteOptionslist.Count()];
+                List<string> voteOptionslist = _voter.GetCampaignVoteOptionsCampaign(_campaign.Name);
+                _checkboxes = new CheckBox[voteOptionslist.Count()];
 
                 if (voteOptionslist.Count() > 0)
                 {
@@ -112,14 +114,14 @@ namespace eVotingSystem
 
                     for (int i = 0; i < voteOptionslist.Count; i++)
                     {
-                        checkboxes[i] = new CheckBox();
+                        _checkboxes[i] = new CheckBox();
 
-                        checkboxes[i].AutoSize = true;
+                        _checkboxes[i].AutoSize = true;
                         innitialpoint += yDistanceOffset;
-                        checkboxes[i].Text = voteOptionslist[i].ToString();
-                        checkboxes[i].Location = new Point(540, innitialpoint);
-                        checkboxes[i].Click += new System.EventHandler(this.choiceCheckbox_Click);
-                        voterPanel.Controls.Add(checkboxes[i]);
+                        _checkboxes[i].Text = voteOptionslist[i].ToString();
+                        _checkboxes[i].Location = new Point(540, innitialpoint);
+                        _checkboxes[i].Click += new System.EventHandler(this.choiceCheckbox_Click);
+                        voterPanel.Controls.Add(_checkboxes[i]);
 
                     }
                 }
@@ -144,9 +146,9 @@ namespace eVotingSystem
         private void PopulateCampaign()
         {
             //Populated Campaign Label
-            if (campaign != null)
+            if (_campaign != null)
             {
-                campaignLabel.Text = campaign.Name;
+                campaignLabel.Text = _campaign.Name;
             }
             else
             {
@@ -157,7 +159,7 @@ namespace eVotingSystem
         {
             //Event on Selection of Vote Option
             CheckBox checkbox = (sender as CheckBox);
-            foreach (CheckBox c in checkboxes)
+            foreach (CheckBox c in _checkboxes)
             {
                 if (c != checkbox)
                 {
@@ -166,15 +168,15 @@ namespace eVotingSystem
 
             }
 
-            var findCheckboxNum = Array.FindIndex(checkboxes, c => c == checkbox);
+            var findCheckboxNum = Array.FindIndex(_checkboxes, c => c == checkbox);
 
-            if (checkboxes[findCheckboxNum].Checked)
+            if (_checkboxes[findCheckboxNum].Checked)
             {
-                optionSelected = Convert.ToInt32(findCheckboxNum);
+                _optionSelected = Convert.ToInt32(findCheckboxNum);
             }
             else
             {
-                optionSelected = -1;
+                _optionSelected = -1;
             }
         }
 
@@ -183,16 +185,16 @@ namespace eVotingSystem
             //Event on Selection of Vote Button that creates the Vote for Voter
             string optionDescription;
 
-            if (optionSelected != -1 && !voter.hasAlreadyVoted(PassedUserDetails.UserName))
+            if (_optionSelected != -1 && !_voter.hasAlreadyVoted(_PassedUserDetails.UserName))
             {
                 bool voteSuccess = false;
-                List<string> voteOptionslist = voter.GetCampaignVoteOptionsCampaign(campaign.Name);
-                optionDescription = voteOptionslist[optionSelected];
-                voteSuccess = voter.Vote(optionSelected, campaign.Name, PassedUserDetails.UserName, PassedUserDetails.Password, optionDescription);
+                List<string> voteOptionslist = _voter.GetCampaignVoteOptionsCampaign(_campaign.Name);
+                optionDescription = voteOptionslist[_optionSelected];
+                voteSuccess = _voter.Vote(_optionSelected, _campaign.Name, _PassedUserDetails.UserName, _PassedUserDetails.Password, optionDescription);
 
                 if (voteSuccess)
                 {
-                    foreach (CheckBox c in checkboxes)
+                    foreach (CheckBox c in _checkboxes)
                     {
                         c.Hide();
                     }
@@ -219,11 +221,11 @@ namespace eVotingSystem
             //Event on Closing of mainform. Gets whether it was closing by the X or Logout button.
             if ((sender as Form).ActiveControl.Text == "Logout")
             {
-                PassedLoginForm.Show();
+                _PassedLoginForm.Show();
             }
             else
             {
-                PassedLoginForm.Close();
+                _PassedLoginForm.Close();
             }
         }
         private void deleteUser_Click_1(object sender, EventArgs e)
@@ -262,7 +264,7 @@ namespace eVotingSystem
                 if (roleTextbox.Text == "Voter" || roleTextbox.Text == "Admin" || roleTextbox.Text == "Auditor")
                 {
 
-                    if(admin.CreateUser(usernameTextbox.Text, passwordTextbox.Text, roleTextbox.Text)){
+                    if(_admin.CreateUser(usernameTextbox.Text, passwordTextbox.Text, roleTextbox.Text)){
 
                         createUserPanel.Visible = false;
                         MessageBox.Show("User Created");
@@ -293,7 +295,7 @@ namespace eVotingSystem
             //Event on CompleteDeleteUser Button that deletes user stated in username input field.
             if (deleteUsernameTextbox.Text != "")
             {
-                if (admin.DeleteUser(deleteUsernameTextbox.Text))
+                if (_admin.DeleteUser(deleteUsernameTextbox.Text))
                 {
                     MessageBox.Show(deleteUsernameTextbox.Text + " Deleted");
                     deleteUserPanel.Visible = false;
@@ -321,10 +323,10 @@ namespace eVotingSystem
             //Creates campaign using inputted textbox values. Then refreshes UI.
             if (campaignNameTextbox.Text != "" && campaignLengthTextbox.Text != "" && voteOptionsListbox.Items.Count > 1)
             {
-                if (admin.CreateNewCampaign(campaignNameTextbox.Text.ToString(), Convert.ToInt32(campaignLengthTextbox.Text)) && admin.CreateNewCampaignOptions(voteOptionslistToAdd, campaignNameTextbox.Text))
+                if (_admin.CreateNewCampaign(campaignNameTextbox.Text.ToString(), Convert.ToInt32(campaignLengthTextbox.Text)) && _admin.CreateNewCampaignOptions(_voteOptionslistToAdd, campaignNameTextbox.Text))
                 {
                     MessageBox.Show("Campaign Created Successfully");
-                    campaign = admin.getCurrentCampaign();
+                    _campaign = _admin.getCurrentCampaign();
                     PopulateCampaign();
                     createNewCampaignPanel.Visible = false;
                     campaignNameTextbox.Text = "";
@@ -350,7 +352,7 @@ namespace eVotingSystem
             // Adds VoteOption textbox value to VoteOptionListbox
             if (voteOptionTextbox.Text != "")
             {
-                voteOptionslistToAdd.Add(voteOptionTextbox.Text);
+                _voteOptionslistToAdd.Add(voteOptionTextbox.Text);
                 voteOptionsListbox.Items.Add(voteOptionTextbox.Text);
                 voteOptionTextbox.Text = "";
             }
@@ -379,7 +381,7 @@ namespace eVotingSystem
         private void PopulateCampaignsListBox()
         {
             // Populates CampaignListbox with results of all Campaigns in Database
-            List<string> allCampaignslist = auditor.GetAllCampaigns();
+            List<string> allCampaignslist = _auditor.GetAllCampaigns();
 
             foreach (string c in allCampaignslist)
             {
@@ -395,10 +397,10 @@ namespace eVotingSystem
             if (selectCampaignAuditListBox.SelectedItem != null)
             {
 
-                totalVotesDisplayLabel.Text = auditor.CountAllVotes(selectCampaignAuditListBox.SelectedItem.ToString()).ToString();
-                winnerDisplayLabel.Text = auditor.CalculateWinner(selectCampaignAuditListBox.SelectedItem.ToString());
+                totalVotesDisplayLabel.Text = _auditor.CountAllVotes(selectCampaignAuditListBox.SelectedItem.ToString()).ToString();
+                winnerDisplayLabel.Text = _auditor.CalculateWinner(selectCampaignAuditListBox.SelectedItem.ToString());
 
-                foreach (string c in auditor.CalculateOrder(selectCampaignAuditListBox.SelectedItem.ToString()))
+                foreach (string c in _auditor.CalculateOrder(selectCampaignAuditListBox.SelectedItem.ToString()))
                 {
                     allVotesCountListBox.Items.Add(c);
                 }

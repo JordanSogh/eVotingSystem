@@ -8,10 +8,10 @@ namespace eVotingSystem
 {
      public class Vote
     {
-        private int ballot;
-        private string ballotDescription;
+        private int _ballot;
+        private string _ballotDescription;
 
-        public int Ballot { get => ballot; set => ballot = value; }
-        public string BallotDescription { get => ballotDescription; set => ballotDescription = value; }
+        public int Ballot { get => _ballot; set => _ballot = value; }
+        public string BallotDescription { get => _ballotDescription; set => _ballotDescription = value; }
     }
 }

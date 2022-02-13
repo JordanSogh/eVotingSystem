@@ -8,26 +8,26 @@ namespace eVotingSystem
 {
      public class Auditor : User
     {
-        DatabaseHelper dbHelp = new DatabaseHelper();
+        DatabaseHelper _dbHelp = new DatabaseHelper();
 
 
         public List<string> GetCompletedCampaignVotes(string campaign)
         {
-            return dbHelp.GetCompletedCampaignVotes(campaign);
+            return _dbHelp.GetCompletedCampaignVotes(campaign);
         }
         public List<string> GetAllCampaigns()
         {
-            return dbHelp.GetAllCampaigns();
+            return _dbHelp.GetAllCampaigns();
         }
 
         public List<Vote> GetAllVotes(string campaign)
         {
-            return dbHelp.GetAllVotes(campaign);
+            return _dbHelp.GetAllVotes(campaign);
         }
 
         public int CountAllVotes(string campaign)
         {  
-            int allVotes = dbHelp.GetAllVotes(campaign).Count();
+            int allVotes = _dbHelp.GetAllVotes(campaign).Count();
             return allVotes;
         }
 
@@ -35,7 +35,7 @@ namespace eVotingSystem
         {
             string winner = "";
 
-            List<Vote> allVotes = dbHelp.GetAllVotes(campaign);
+            List<Vote> allVotes = _dbHelp.GetAllVotes(campaign);
             List<string> allVotesDescription = new List<string>();
 
             foreach (Vote v in allVotes)
@@ -56,7 +56,7 @@ namespace eVotingSystem
         {
             List<string> orderList = new List<string>();
 
-            List<Vote> allVotes = dbHelp.GetAllVotes(campaign);
+            List<Vote> allVotes = _dbHelp.GetAllVotes(campaign);
             List<string> allVotesDescription = new List<string>();
 
             foreach (Vote v in allVotes)

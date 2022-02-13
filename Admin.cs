@@ -8,23 +8,23 @@ namespace eVotingSystem
 {
      public class Admin:User
     {
-        DatabaseHelper dbHelp = new DatabaseHelper();
+        DatabaseHelper _dbHelp = new DatabaseHelper();
         public bool CreateNewCampaign(string name, int length)
         {
-           return dbHelp.CreateCampaign(name, length);
+           return _dbHelp.CreateCampaign(name, length);
         }
 
         public bool CreateNewCampaignOptions(List<string> optionsList, string campaign)
         {
-            return dbHelp.CreateCampaignOptions(optionsList, campaign);
+            return _dbHelp.CreateCampaignOptions(optionsList, campaign);
         }
         public bool DeleteUser(string userName)
         {
-            return dbHelp.DeleteUser(userName);
+            return _dbHelp.DeleteUser(userName);
         }
 
         public bool CreateUser(string username, string password, string role) {
-            return dbHelp.AddUser( username,password,role);
+            return _dbHelp.AddUser( username,password,role);
         }
 
         

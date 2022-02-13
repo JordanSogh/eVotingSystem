@@ -8,14 +8,14 @@ namespace eVotingSystem
 {
     public class LoginUser
     {
-        private string userName;
-        private string password;
-        private string role;
+        private string _userName;
+        private string _password;
+        private string _role;
 
         
-        public string Password { get => password; set => password = value; }
-        public string UserName { get => userName; set => userName = value; }
-        public string Role { get => role; set => role = value; }
+        public string Password { get => _password; set => _password = value; }
+        public string UserName { get => _userName; set => _userName = value; }
+        public string Role { get => _role; set => _role = value; }
 
         public bool ValidateAndLoginUser(string username, string password)
         {
