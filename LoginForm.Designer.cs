@@ -66,8 +66,7 @@ namespace eVotingSystem
             this.userNameInput.CustomButton.UseSelectable = true;
             this.userNameInput.CustomButton.Visible = false;
             this.userNameInput.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.userNameInput.Lines = new string[] {
-        "userAuditor"};
+            this.userNameInput.Lines = new string[0];
             this.userNameInput.Location = new System.Drawing.Point(441, 265);
             this.userNameInput.MaxLength = 32767;
             this.userNameInput.Name = "userNameInput";
@@ -79,7 +78,6 @@ namespace eVotingSystem
             this.userNameInput.ShortcutsEnabled = true;
             this.userNameInput.Size = new System.Drawing.Size(228, 40);
             this.userNameInput.TabIndex = 7;
-            this.userNameInput.Text = "userAuditor";
             this.userNameInput.UseSelectable = true;
             this.userNameInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.userNameInput.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -100,8 +98,7 @@ namespace eVotingSystem
             this.passwordInput.CustomButton.UseSelectable = true;
             this.passwordInput.CustomButton.Visible = false;
             this.passwordInput.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.passwordInput.Lines = new string[] {
-        "password"};
+            this.passwordInput.Lines = new string[0];
             this.passwordInput.Location = new System.Drawing.Point(441, 321);
             this.passwordInput.MaxLength = 32767;
             this.passwordInput.Name = "passwordInput";
@@ -113,7 +110,6 @@ namespace eVotingSystem
             this.passwordInput.ShortcutsEnabled = true;
             this.passwordInput.Size = new System.Drawing.Size(228, 40);
             this.passwordInput.TabIndex = 8;
-            this.passwordInput.Text = "password";
             this.passwordInput.UseSelectable = true;
             this.passwordInput.UseSystemPasswordChar = true;
             this.passwordInput.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
