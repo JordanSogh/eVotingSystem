@@ -44,7 +44,7 @@ namespace eVotingSystem
             if (allVotesDescription.Count() > 0 )
             {
               
-                winner = (from x in allVotesDescription group x by x into grpvotes orderby grpvotes.Count() descending select grpvotes.Key).First();
+                winner = (from x in allVotesDescription group x by x into grpvotes orderby grpvotes.Count() ascending select grpvotes.Key).First();
 
             }
             return winner;
