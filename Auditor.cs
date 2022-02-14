@@ -31,21 +31,25 @@ namespace eVotingSystem
         }
         public string CalculateWinner(string campaign)
         {
-            // Retrieves the Votes of a Campaign then Calculates the winner by grouping and sorting in order. Returns the winner.
+            // Retrieves the Votes of a Campaign then Calculates the winner by grouping. Returns the winner.
             string winner = "";
 
             List<Vote> allVotes = _dbHelp.GetAllVotes(campaign);
             List<string> allVotesDescription = new List<string>();
-
+            
             foreach (Vote v in allVotes)
             {
                 allVotesDescription.Add(v.BallotDescription);
             }
             if (allVotesDescription.Count() > 0 )
-            {
-              
-                winner = (from x in allVotesDescription group x by x into grpvotes orderby grpvotes.Count() ascending select grpvotes.Key).First();
+            {                
+                List<string> orderedList = new List<string>();
 
+                foreach (var item in allVotesDescription.GroupBy(x => x).Select(group => new { Option = group.Key, Count = group.Count() }).OrderByDescending(x => x.Count))
+                {
+                    orderedList.Add(item.Option);               
+                }
+                winner = orderedList[0];
             }
             return winner;
 
@@ -65,12 +69,7 @@ namespace eVotingSystem
             }
             if (allVotesDescription.Count() > 0)
             {
-                foreach (var item in allVotesDescription.GroupBy(x => x)
-                        .Select(group => new {
-                            Option = group.Key,
-                            Count = group.Count()
-                        })
-                        .OrderBy(x => x.Option))
+                foreach (var item in allVotesDescription.GroupBy(x => x).Select(group => new {Option = group.Key,Count = group.Count() }) .OrderByDescending(x => x.Count))
                 {
                     orderList.Add( item.Option +" - "+ item.Count + " Votes");
                 }

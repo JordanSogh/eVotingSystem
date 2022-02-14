@@ -44,6 +44,7 @@ namespace eVotingSystem
             this.deleteUser = new System.Windows.Forms.Button();
             this.addUser = new System.Windows.Forms.Button();
             this.createNewCampaignPanel = new System.Windows.Forms.Panel();
+            this.clearButton = new System.Windows.Forms.Button();
             this.addVoteOptionButton = new System.Windows.Forms.Button();
             this.voteOptionsListbox = new System.Windows.Forms.ListBox();
             this.voteOptionTextbox = new System.Windows.Forms.TextBox();
@@ -80,7 +81,6 @@ namespace eVotingSystem
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.clearButton = new System.Windows.Forms.Button();
             this.voterPanel.SuspendLayout();
             this.adminPanel.SuspendLayout();
             this.createNewCampaignPanel.SuspendLayout();
@@ -255,6 +255,19 @@ namespace eVotingSystem
             this.createNewCampaignPanel.TabIndex = 10;
             this.createNewCampaignPanel.Visible = false;
             this.createNewCampaignPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.createNewCampaignPanel_Paint);
+            // 
+            // clearButton
+            // 
+            this.clearButton.BackColor = System.Drawing.Color.Silver;
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(24, 432);
+            this.clearButton.Margin = new System.Windows.Forms.Padding(4);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(136, 28);
+            this.clearButton.TabIndex = 19;
+            this.clearButton.Text = "Clear Options";
+            this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // addVoteOptionButton
             // 
@@ -539,9 +552,9 @@ namespace eVotingSystem
             this.label6.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(588, 223);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(383, 29);
+            this.label6.Size = new System.Drawing.Size(283, 29);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Total Votes Per Vote Option (In Order)";
+            this.label6.Text = "Total Votes Per Vote Option";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
@@ -666,19 +679,6 @@ namespace eVotingSystem
             this.label1.TabIndex = 9;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // clearButton
-            // 
-            this.clearButton.BackColor = System.Drawing.Color.Silver;
-            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearButton.Location = new System.Drawing.Point(24, 432);
-            this.clearButton.Margin = new System.Windows.Forms.Padding(4);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(136, 28);
-            this.clearButton.TabIndex = 19;
-            this.clearButton.Text = "Clear Options";
-            this.clearButton.UseVisualStyleBackColor = false;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -689,9 +689,9 @@ namespace eVotingSystem
             this.Controls.Add(this.campaignLabel);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.roleLabel);
+            this.Controls.Add(this.auditorPanel);
             this.Controls.Add(this.adminPanel);
             this.Controls.Add(this.voterPanel);
-            this.Controls.Add(this.auditorPanel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
